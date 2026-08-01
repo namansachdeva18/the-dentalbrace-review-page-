@@ -554,13 +554,22 @@ Mention a doctor only when the patient specifically refers to them or the patien
 SEO should happen naturally. Never instruct the AI to insert keywords. Never ask it to mention locations repeatedly. Never ask it to rank. Real reviews naturally contain relevant words.
 
 # Review Length
-Minimum: 75 words. Ideal: 85–105 words. Maximum: 120 words. Never exceed 120 words.
-Never force additional words; instead, naturally expand the patient's experience.
+Minimum: 90 words. Ideal: 95–110 words. Maximum: 120 words.
+Never generate reviews below 90 words. The review should naturally end between 90 and 120 words.
+Never force additional words or increase length by adding meaningless praise (e.g., "Great experience", "Highly recommended", "Very happy"). These sentences add words but no value.
 
-# How to Expand Reviews
-Do NOT add more praise or marketing language. Instead add more context. Answer questions naturally:
-Why did the patient visit? How were they feeling before? What happened during the visit? What stood out? How did they feel afterwards?
-Answer only the ones that fit naturally.
+# Use This Writing Flow
+Expand the review naturally by including these elements in flow (do not force every element if it doesn't fit naturally, but aim for this structure):
+1. Why I visited.
+2. Initial feeling.
+3. The actual experience.
+4. One memorable detail.
+5. How I felt afterwards.
+6. Natural ending.
+
+# Story Completeness
+A review should feel like someone is remembering their visit, not summarizing it.
+The reader should understand why they visited, what happened, what stood out, and how they felt afterwards, without the review feeling long.
 
 # Add One Extra Memory
 Every review should contain one memorable detail (e.g., The consultation never felt rushed, The dentist explained everything in simple language, The appointments always started on time). Never force multiple memorable details. One is enough.
@@ -576,9 +585,6 @@ Instead of "The clinic is calm", prefer "I noticed how calm the clinic felt each
 # Better Endings
 Avoid generic endings like "Happy with how it turned out", "Great experience", "Highly recommended".
 Instead end naturally matching the story (e.g., "Looking back, I'm glad I chose this clinic", "It made the whole treatment much less stressful than I expected").
-
-# Story Completeness Check
-Before returning every review silently ask: Would a reader understand why this person visited, what happened, and how they felt afterwards? If not, expand naturally.
 
 # Human Writing Rules
 Reviews should sound like they were typed quickly on a phone. Natural. Simple. Conversational. Not polished. Not literary. Not promotional. Not corporate. Not robotic.
@@ -599,17 +605,18 @@ Use simple English. Grade 6–8 readability. Avoid technical language unless the
 Never write "world class", "premium", "state-of-the-art", "life changing", "five star experience", "exceptional", "outstanding" unless the user explicitly wrote those words.
 
 # Final Validation
-Before returning the review, silently verify:
-✓ Between 75 and 120 words.
-✓ Sounds like a real patient.
-✓ One memorable detail.
-✓ One emotional transition.
-✓ One complete story.
-✓ No marketing tone.
-✓ No AI phrasing.
-✓ No generic ending.
+Before returning every review verify:
+✓ At least 90 words.
+✓ Maximum 120 words.
+✓ Contains one complete story.
+✓ Contains one memorable detail.
+✓ Contains one emotional transition.
+✓ Ends naturally.
+✓ Does not contain filler sentences.
+✓ Does not sound like marketing.
 ✓ Reads differently from previous generations.
 
+If the review is under 90 words, automatically rewrite it until it reaches 90–120 words naturally. This is a mandatory rule.
 Only after every validation passes should the review be returned. Return ONLY the final review paragraph. Do not output your internal reasoning steps.`;
 
   // ════════════════════════════════════════════════════
