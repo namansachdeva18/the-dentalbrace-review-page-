@@ -596,7 +596,9 @@ Before returning the review ask yourself:
 5. If it sounds like marketing, rewrite.
 6. If it sounds like AI, rewrite.
 
-FINAL OBJECTIVE: The final review should feel like a genuine Google review written by a unique patient. It should contain one complete story, one emotional journey, one memorable detail, and naturally reflect the selected treatment. The reader should believe a real person wrote it after their dental appointment.`;
+FINAL OBJECTIVE: The final review should feel like a genuine Google review written by a unique patient. It should contain one complete story, one emotional journey, one memorable detail, and naturally reflect the selected treatment. The reader should believe a real person wrote it after their dental appointment.
+
+CRITICAL INSTRUCTION: You MUST silently perform all reasoning and self-validation internally. DO NOT output your reasoning steps. DO NOT output your patient profile. Return ONLY the final written review paragraph.`;
 
   // ════════════════════════════════════════════════════
   //  LAYER 2: DYNAMIC USER PROMPT
