@@ -622,9 +622,9 @@ Only after every validation passes should the review be returned. Return ONLY th
           systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
           contents: [{ parts: [{ text: userPrompt }] }],
           generationConfig: {
-            temperature: 1.0,        // Max creativity = maximum variety per generation
+            temperature: 1.25,       // Max creativity = maximum variety per generation
             maxOutputTokens: 180,    // 120 words ≈ 160 tokens; 180 = safe ceiling
-            topP: 0.97,
+            topP: 0.95,
             // topK omitted — fewer params = lower latency
           },
           safetySettings: [
@@ -696,19 +696,34 @@ Only after every validation passes should the review be returned. Return ONLY th
     setTimeout(() => { errorDiv.style.display = 'none'; }, 7000);
   }
 
-  // ── Rich SEO Fallback Generator (Dynamic) ──────
+  // ── Dynamic Fallback Generator ──────
   // Used when API quota is exceeded or network fails.
   function getFallbackReview() {
     const txArr = selectedTreatments.size > 0 ? [...selectedTreatments] : ['General Checkup'];
     const tx = txArr.join(' and ');
     const notes = notesInput?.value.trim() ? ` ${notesInput.value.trim()}` : '';
 
-    const templates = [
-      `I had my ${tx} done here recently. I was a bit anxious beforehand, but the doctor explained everything clearly which really helped. The whole process went smoother than I expected. Glad I finally got it sorted.${notes}`,
-      `Finished my ${tx} appointments. The clinic is calm and the team is patient. I didn't feel rushed during the consultation at all. Everything healed up fine. Happy with how it turned out.${notes}`,
-      `Came in for ${tx}. I was dealing with some discomfort before, but feeling much better now. The dentist was gentle and the instructions they gave me for aftercare were easy to follow. A very reassuring experience overall.${notes}`
+    const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+    
+    const openers = [
+      `I had my ${tx} done here recently.`,
+      `Finished my ${tx} appointments.`,
+      `Came in for ${tx}.`
     ];
-    return templates[Math.floor(Math.random() * templates.length)];
+    
+    const middles = [
+      `I was a bit anxious beforehand, but the doctor explained everything clearly which really helped.`,
+      `The clinic is calm and the team is patient. I didn't feel rushed during the consultation at all.`,
+      `I was dealing with some discomfort before, but feeling much better now.`
+    ];
+    
+    const endings = [
+      `The whole process went smoother than I expected. Glad I finally got it sorted.`,
+      `Everything healed up fine. Happy with how it turned out.`,
+      `The dentist was gentle and the instructions they gave me for aftercare were easy to follow. A very reassuring experience overall.`
+    ];
+
+    return `${pick(openers)} ${pick(middles)} ${pick(endings)}${notes}`;
   }
 
   // ── Main generate handler ─────────────────────
