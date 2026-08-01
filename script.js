@@ -1026,11 +1026,11 @@ Before returning the review, verify:
 --------------------------------------------------
 # CURRENT PATIENT CONTEXT TO USE
 Clinic: The Dental Brace Clinic & Implant Centre, Bibi Wala Road, Bathinda, Punjab
-${name ? \`Patient Name: \${name}\` : 'Patient: Resident of Bathinda / Punjab'}
-Treatment Received: \${txLabel} (\${txContext})
-Rating: \${rating}/5 stars
-Doctor: \${doctor}
-\${notes ? \`Patient Notes/Memory: \${notes}\` : ''}
+${name ? `Patient Name: ${name}` : 'Patient: Resident of Bathinda / Punjab'}
+Treatment Received: ${txLabel} (${txContext})
+Rating: ${rating}/5 stars
+Doctor: ${doctor}
+${notes ? `Patient Notes/Memory: ${notes}` : ''}
 
 Return ONLY the review text in a single paragraph.
 
