@@ -579,79 +579,79 @@ function triggerConfetti() {
   // so collectively no two reviews feel like they are about the same thing
   const EMPHASIS_CATEGORIES = [
     {
-      id: 'value_for_money',
-      focus: 'This review is primarily about VALUE FOR MONEY. The patient cannot believe how affordable world-class treatment was. They mention the transparent pricing, no hidden costs, and compare how much they would have spent in Chandigarh or Ludhiana. The cost-to-quality ratio surprised them.',
-      seoHint: 'affordable dental clinic',
-    },
-    {
-      id: 'punctuality_and_waiting',
-      focus: 'This review is primarily about PUNCTUALITY and ZERO WAITING. The patient expected to wait for hours like at other clinics but was seen exactly on time. The appointments are efficient, the queue system works, and they got home faster than expected. This is rare in Bathinda.',
-      seoHint: 'best dentist in Bathinda',
-    },
-    {
-      id: 'fear_and_anxiety_relief',
-      focus: 'This review is primarily about OVERCOMING DENTAL FEAR. The patient was extremely anxious or dental-phobic before. The team\'s calm, gentle manner completely changed this. No pressure, no rushing. The patient now actually looks forward to their checkups. This was a life-changing shift.',
+      id: 'pain_management',
+      focus: 'This review is primarily about PAIN MANAGEMENT AND GENTLE TECHNIQUE. The patient had a complex procedure (like an extraction or root canal) but felt absolutely nothing. They were amazed by the doctor\'s light hand and how comfortable the actual clinical work was.',
       seoHint: 'painless dental treatment in Bathinda',
     },
     {
-      id: 'doctor_explanation',
-      focus: 'This review is primarily about HOW THOROUGHLY THE DOCTOR EXPLAINED EVERYTHING. The patient loved that nothing was rushed. Digital X-rays were shown and explained. Treatment options were laid out clearly. The patient felt respected and informed throughout, not just treated like a number.',
-      seoHint: 'best orthodontist in Bathinda',
-    },
-    {
-      id: 'visible_transformation',
-      focus: 'This review is primarily about THE VISIBLE BEFORE-AND-AFTER TRANSFORMATION. The patient has a dramatically different smile/bite/appearance. People around them noticed immediately — colleagues at work, family members, old friends. Their confidence skyrocketed. This is the emotional core of the review.',
-      seoHint: 'best smile makeover clinic in Bathinda',
-    },
-    {
-      id: 'staff_warmth',
-      focus: 'This review is primarily about THE WARMTH OF THE ENTIRE TEAM — not just the doctor. The receptionist, the assistants, everyone made the patient feel genuinely welcomed. First names were used, check-up follow-up calls came. It felt more like a family than a clinical appointment.',
-      seoHint: 'most trusted dental clinic in Bathinda',
-    },
-    {
-      id: 'technology_and_modernity',
-      focus: 'This review is primarily about THE MODERN TECHNOLOGY at the clinic. Digital scanning (no messy impressions), 3D imaging, modern sterilisation pods, imported equipment. The patient is clearly someone who appreciates technology and was impressed this level of equipment exists in Bathinda.',
-      seoHint: 'top dental clinic in Punjab',
-    },
-    {
-      id: 'child_friendly',
-      focus: 'This review is primarily about BRINGING A CHILD here for treatment. The parent was worried about their child\'s fear. The team was incredibly patient and made the child laugh. The child actually asked to come back. Other parents in Bathinda need to know about this.',
+      id: 'diagnostic_accuracy',
+      focus: 'This review is primarily about DIAGNOSTIC ACCURACY. The patient had an issue that other dentists couldn\'t figure out, but Dr. Sandeep or Dr. Ritu diagnosed it immediately using their expertise and 3D imaging. The correct diagnosis saved the patient\'s tooth.',
       seoHint: 'best dentist in Bathinda',
     },
     {
-      id: 'follow_up_and_aftercare',
-      focus: 'This review is primarily about THE AFTERCARE and FOLLOW-UP. After the treatment ended, the clinic still called to check on progress. The patient had a minor concern mid-treatment and was seen immediately at no extra charge. This ongoing commitment is what separates this clinic.',
+      id: 'aesthetic_perfection',
+      focus: 'This review is primarily about AESTHETIC PERFECTION. The patient got a crown, bridge, or veneer, and it matches their natural teeth so perfectly that nobody can tell it is fake. The shape, color, and blending are flawless.',
+      seoHint: 'best smile makeover clinic in Bathinda',
+    },
+    {
+      id: 'bite_correction',
+      focus: 'This review is primarily about FUNCTIONAL BITE CORRECTION. Before treatment, the patient couldn\'t chew properly or had jaw pain. The orthodontic or implant work completely restored their ability to eat comfortably. It\'s about the functional success of the treatment.',
+      seoHint: 'best orthodontist in Bathinda',
+    },
+    {
+      id: 'minimal_invasiveness',
+      focus: 'This review is primarily about TOOTH PRESERVATION. The patient appreciates that the doctor didn\'t just jump to pulling the tooth or doing aggressive work. They used advanced techniques to save the natural tooth structure. The conservative, ethical approach won their trust.',
       seoHint: 'most trusted dental clinic in Bathinda',
     },
     {
-      id: 'second_opinion_switcher',
-      focus: 'This review is primarily about SWITCHING FROM ANOTHER CLINIC. The patient went somewhere else first, was dissatisfied, then came here. The contrast was stark — the treatment plan here was completely different (better), and the result proves it. They regret not coming here first.',
-      seoHint: 'top-rated dental clinic in Punjab',
-    },
-    {
-      id: 'family_referral_chain',
-      focus: 'This review is primarily about HOW THEY GOT REFERRED BY FAMILY. Brother, mother, or cousin came first. Seeing their results, this patient came. Now the whole family comes here and refers friends. This clinic has essentially become the family\'s permanent dental home.',
-      seoHint: 'best AIIMS-trained dentist in Punjab',
-    },
-    {
-      id: 'credentials_and_trust',
-      focus: 'This review is primarily about TRUSTING THE DOCTOR\'S CREDENTIALS. The patient did their research — found out about the AIIMS and Gold Medal background — and this was the deciding factor. The skill level was evident immediately. This is what AIIMS-level expertise looks like in practice.',
-      seoHint: 'best AIIMS-trained dentist in Punjab',
-    },
-    {
-      id: 'working_professional',
-      focus: 'This review is primarily about HOW CONVENIENT THIS IS FOR A BUSY WORKING PROFESSIONAL. Appointments are honoured on time. Treatments are efficient. The patient could fit visits around a busy work schedule without taking full days off. No disruption to work life.',
+      id: 'recovery_speed',
+      focus: 'This review is primarily about THE INCREDIBLE POST-TREATMENT RECOVERY. The patient expected to be in pain for days after their implant or surgery, but they were back to work the next day with almost zero swelling. The surgical precision was elite.',
       seoHint: 'top implant specialist in Bathinda',
     },
     {
-      id: 'hygiene_safety',
-      focus: 'This review is primarily about HYGIENE AND SAFETY STANDARDS. The patient is someone who cares deeply about sterilisation. Everything is opened fresh from sealed packaging in front of them. The clinic feels surgical-grade clean. This is not common in local clinics.',
+      id: 'correcting_past_mistakes',
+      focus: 'This review is primarily about FIXING PREVIOUS BAD DENTAL WORK. The patient had a botched root canal or bad braces from another clinic. This clinic took on the complex revision case and completely fixed the mess. The clinical skill required was obvious.',
       seoHint: 'top-rated dental clinic in Punjab',
     },
     {
-      id: 'long_journey_patient',
-      focus: 'This review is primarily about TRAVELLING FROM ANOTHER CITY to come here. The patient came from Patiala, Moga, Muktsar, or another district specifically for this clinic after hearing about it. The journey was absolutely worth it. They would travel this distance again without hesitation.',
+      id: 'longevity_of_work',
+      focus: 'This review is primarily about DURABILITY. The patient had work done here a long time ago (or knows someone who did), and it has lasted perfectly without any issues. They are praising the high-quality materials and structural integrity of the dental work.',
+      seoHint: 'best AIIMS-trained dentist in Punjab',
+    },
+    {
+      id: 'custom_treatment_plan',
+      focus: 'This review is primarily about THE CUSTOMIZED CLINICAL APPROACH. The treatment plan wasn\'t one-size-fits-all. The doctor took facial structure, jaw alignment, and long-term health into account when designing the braces or implant plan.',
       seoHint: 'best invisible braces in Punjab',
+    },
+    {
+      id: 'emergency_handling',
+      focus: 'This review is primarily about A CLINICAL EMERGENCY. The patient came in with severe, unbearable tooth pain or a broken tooth. The team handled it with extreme clinical efficiency, relieving the pain immediately and executing a flawless emergency procedure.',
+      seoHint: 'best dentist in Bathinda',
+    },
+    {
+      id: 'ortho_alignment_speed',
+      focus: 'This review is primarily about ORTHODONTIC EFFICIENCY. The patient\'s teeth aligned faster and better than expected. The precise adjustment of the braces or aligners at every visit showed the doctor\'s deep understanding of biomechanics.',
+      seoHint: 'best orthodontist in Bathinda',
+    },
+    {
+      id: 'implant_stability',
+      focus: 'This review is primarily about IMPLANT STABILITY. The patient got a dental implant and remarks on how it feels exactly like a real tooth. It is rock solid, they can bite apples with it, and the surgical placement was mathematically perfect.',
+      seoHint: 'top implant specialist in Bathinda',
+    },
+    {
+      id: 'pediatric_clinical_skill',
+      focus: 'This review is primarily about PEDIATRIC CLINICAL SKILL. Not just being friendly, but the actual speed and precision of doing a filling or extraction on a moving child without causing them trauma. The clinical execution was incredibly fast and smooth.',
+      seoHint: 'best dentist in Bathinda',
+    },
+    {
+      id: 'preventative_foresight',
+      focus: 'This review is primarily about PREVENTATIVE FORESIGHT. The doctor noticed a tiny issue on the X-ray that was about to become a huge problem. By catching it early and treating it clinically, they saved the patient from a massive future surgery.',
+      seoHint: 'most trusted dental clinic in Bathinda',
+    },
+    {
+      id: 'advanced_instrumentation',
+      focus: 'This review is primarily about THE USE OF ADVANCED INSTRUMENTS DURING TREATMENT. The patient noticed the use of rotary endodontics, apex locators, or advanced scanners that made the actual procedure faster, safer, and far more precise than traditional methods.',
+      seoHint: 'top dental clinic in Punjab',
     },
   ];
 
@@ -667,7 +667,6 @@ function triggerConfetti() {
     'a middle-aged family man from a nearby district who made a special trip to Bathinda for this clinic.',
   ];
 
-  // Specific sentence-level openers (the literal first few words)
   const OPENING_STARTERS = [
     'Never expected a dental clinic in Bathinda to',
     'My family had been coming here for years before',
@@ -684,6 +683,41 @@ function triggerConfetti() {
     'Had my procedure done here last week and',
     'What impressed me most was not the treatment but',
     'Coming from Moga specifically to visit this clinic was',
+    'I rarely leave Google reviews, but',
+    'For anyone anxious about visiting the dentist,',
+    'It took me a long time to find a doctor I trust,',
+    'My entire perspective on dental care changed when',
+    'Honestly, I was terrified of getting this procedure done,',
+    'A friend recommended Dr. Sandeep to me, and',
+    'Cannot express how relieved I am after visiting',
+    'If you need serious dental work done in Bathinda,',
+    'I was dealing with severe tooth pain for weeks until',
+    'From the initial consultation to the final result,',
+    'My previous dentist made a mess of my teeth, so',
+    'Living in Bathinda, we are lucky to have',
+    'The level of clinical expertise here is',
+    'I travelled all the way from Muktsar just because',
+    'Getting my braces done here was',
+    'I had almost given up on fixing my bite until',
+    'The most professional healthcare experience I\'ve had —',
+    'I walked in expecting a massive bill and a lot of pain, but',
+    'My mother got her implants done here, which is why',
+    'Trusting a new dentist is hard, but',
+    'The difference in my confidence now is',
+    'I used to hide my teeth in photos, but',
+    'As someone who asks a lot of questions,',
+    'I had a dental emergency on a weekend and',
+    'The precision with which my treatment was handled',
+    'They managed to save a tooth I thought was entirely gone.',
+    'I\'ve had treatments in bigger cities, yet',
+    'Looking at my before and after photos,',
+    'The entire process took far less time than I assumed.',
+    'I brought my elderly father here for treatment and',
+    'What really stands out about this clinic is',
+    'You don\'t realize how important a good dentist is until',
+    'My search for a permanent family dentist ended here.',
+    'I was very skeptical about the timeline they promised,',
+    'I just finished my final appointment and',
   ];
 
   // ── Review Manager: buildPrompt ────────────────────
