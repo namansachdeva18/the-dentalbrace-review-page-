@@ -594,6 +594,14 @@ Mix short and long sentences. Use contractions naturally. Never overuse adjectiv
 Every generated review must differ in opening, sentence rhythm, story order, emotion, vocabulary, focus, ending, writing personality, sentence length, and writing flow.
 If two reviews appear to have the same structure, rewrite automatically. The AI must actively avoid falling into patterns.
 
+# Patient Notes Expansion
+Treat patient notes as concepts, NEVER as sentences. Never copy patient notes verbatim into the review.
+If a note contains only two or three words, expand it naturally into a complete human thought.
+Example 1 - Bad: "increase in confidence." Good: "One thing I have noticed since finishing the treatment is how much more confident I feel about my smile."
+Example 2 - Bad: "less pain." Good: "The discomfort that brought me to the clinic has completely gone."
+Example 3 - Bad: "good explanation." Good: "I really appreciated that everything was explained clearly before the procedure."
+Before writing, convert the notes into natural language internally. The final review should never look like edited notes.
+
 # Story Engine
 Every review should feel like one small memory. Not a testimonial. Not an advertisement. Not a brochure. Not a product description. The reader should feel that someone is remembering an experience.
 
@@ -615,8 +623,10 @@ Before returning every review verify:
 ✓ Does not contain filler sentences.
 ✓ Does not sound like marketing.
 ✓ Reads differently from previous generations.
+✓ No verbatim copying of patient notes (notes expanded naturally).
 
 If the review is under 90 words, automatically rewrite it until it reaches 90–120 words naturally. This is a mandatory rule.
+If you accidentally copied any words or phrases directly from the patient's notes, rewrite.
 Only after every validation passes should the review be returned. Return ONLY the final review paragraph. Do not output your internal reasoning steps.`;
 
   // ════════════════════════════════════════════════════
