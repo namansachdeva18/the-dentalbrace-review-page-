@@ -540,8 +540,7 @@ The review should feel like someone came home after treatment, opened Google, an
 
 # MANDATORY LENGTH
 Minimum: 150 words. Preferred: 160–170 words. Maximum: 180 words.
-Never generate reviews below 150 words.
-If a generated review is shorter than 150 words, automatically rewrite and expand it until it naturally falls between 150 and 180 words.
+Your absolute priority is to reach at least 150 words. Do this by deeply expanding the story details.
 Never pad reviews with meaningless praise.
 
 # TREATMENT UNDERSTANDING
@@ -591,23 +590,12 @@ These phrases should almost never appear unless genuinely supported by the patie
 Every review must have a different opening, ending, rhythm, vocabulary, emotional journey, memorable moment, and writing style. If two reviews feel similar, rewrite.
 
 # QUALITY VALIDATION
-Before returning every review silently verify:
-✓ Between 150 and 180 words.
-✓ One complete story.
-✓ One emotional journey.
-✓ One or two memorable moments.
-✓ Treatment-specific details.
-✓ No copied patient notes.
-✓ No repeated phrases.
-✓ No marketing language.
-✓ No keyword stuffing.
-✓ Sounds like a genuine Google review.
+Before generating the final text, silently verify that your planned story will hit the 150-word minimum and follows all rules.
+Ensure you do not use any marketing language, and do not repeat generic phrases.
+If I removed the treatment name, could someone still guess the treatment? If NO, adjust your story.
+If I changed Root Canal to Teeth Whitening, would the review still make sense? If YES, adjust your story.
 
-If any validation fails, rewrite automatically until every condition passes.
-If I removed the treatment name, could someone still guess the treatment? If NO, rewrite.
-If I changed Root Canal to Teeth Whitening, would the review still make sense? If YES, rewrite.
-
-FINAL OBJECTIVE: The final review should feel like a genuine Google review written by a unique patient. It should contain one complete story, one emotional journey, one memorable detail, and naturally reflect the selected treatment. The reader should believe a real person wrote it after their dental appointment.
+FINAL OBJECTIVE: The final review should feel like a genuine Google review written by a unique patient. It should contain one complete story, one emotional journey, one or two memorable moments, and naturally reflect the selected treatment. The reader should believe a real person wrote it after their dental appointment.
 
 CRITICAL INSTRUCTION: You MUST silently perform all reasoning and self-validation internally. DO NOT output your reasoning steps. DO NOT output your patient profile. Return ONLY the final written review paragraph.`;
 
@@ -729,21 +717,21 @@ CRITICAL INSTRUCTION: You MUST silently perform all reasoning and self-validatio
     const pick = arr => arr[Math.floor(Math.random() * arr.length)];
     
     const openers = [
-      `I had my ${tx} done here recently.`,
-      `Finished my ${tx} appointments.`,
-      `Came in for ${tx}.`
+      `I finally got my ${tx} done here recently after putting it off for a while.`,
+      `I just finished up my ${tx} appointments and wanted to share how it went.`,
+      `I came in for ${tx} because I had been dealing with some ongoing issues.`
     ];
     
     const middles = [
-      `I was a bit anxious beforehand, but the doctor explained everything clearly which really helped.`,
-      `The clinic is calm and the team is patient. I didn't feel rushed during the consultation at all.`,
-      `I was dealing with some discomfort before, but feeling much better now.`
+      `I was honestly pretty nervous before walking in, but the doctor took the time to explain exactly what to expect, which immediately put me at ease. The whole procedure was much more comfortable than I had anticipated.`,
+      `I was dealing with quite a bit of discomfort before, but the dentist was so careful and attentive throughout the entire process. It’s such a relief to finally have this taken care of properly.`,
+      `I wasn't sure what the results would be like, but I am so relieved. The attention to detail during the treatment was completely unexpected, and I never felt like they were rushing to get to the next patient.`
     ];
     
     const endings = [
-      `The whole process went smoother than I expected. Glad I finally got it sorted.`,
-      `Everything healed up fine. Happy with how it turned out.`,
-      `The dentist was gentle and the instructions they gave me for aftercare were easy to follow. A very reassuring experience overall.`
+      `Looking back, I'm genuinely glad I chose to get this sorted out here. I feel so much more confident now.`,
+      `The recovery was surprisingly straightforward, and everything healed up perfectly. It really improved my daily routine.`,
+      `I actually feel a lot better now. It’s made a massive difference to my comfort, and I’m thankful for how smoothly it all went.`
     ];
 
     return `${pick(openers)} ${pick(middles)} ${pick(endings)}${notes}`;
