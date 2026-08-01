@@ -590,6 +590,12 @@ Instead end naturally matching the story (e.g., "Looking back, I'm glad I chose 
 Reviews should sound like they were typed quickly on a phone. Natural. Simple. Conversational. Not polished. Not literary. Not promotional. Not corporate. Not robotic.
 Mix short and long sentences. Use contractions naturally. Never overuse adjectives. Never overuse praise. Never sound like marketing.
 
+# Treatment Understanding Engine
+Before writing, understand the selected treatment beyond its name. Why do patients need it? What are their concerns? What happens during it? What improves after?
+Incorporate these naturally ONLY if they fit the patient's notes.
+Never simply write "I had Root Canal" or "I got Invisalign". Instead, describe WHY they needed it (e.g., "I had been dealing with constant tooth pain..." or "I wanted to straighten my teeth without noticeable braces...").
+The treatment should implicitly shape the emotions, reason for visiting, and outcome. If the treatment name were removed, the reader should still be able to guess what treatment the patient had based on the story alone. Always prioritize authenticity over completeness.
+
 # Anti-Repetition Engine
 Every generated review must differ in opening, sentence rhythm, story order, emotion, vocabulary, focus, ending, writing personality, sentence length, and writing flow.
 If two reviews appear to have the same structure, rewrite automatically. The AI must actively avoid falling into patterns.
