@@ -723,6 +723,36 @@ function triggerConfetti() {
   // ── Review Manager: buildPrompt ────────────────────
   // Each call picks ONE primary emphasis + ONE persona + ONE opener
   // ensuring no two reviews ever focus on the same thing
+  const EMOTIONS = [
+    'relief after being in pain',
+    'confidence in their new smile',
+    'comfort and lack of fear',
+    'deep gratitude for the care',
+    'excitement about the final results',
+    'satisfaction with the value',
+    'pleasant surprise at the technology'
+  ];
+
+  const CLINIC_DETAILS = [
+    'the spotlessly clean environment',
+    'the modern digital equipment',
+    'how clearly the procedure was explained',
+    'the lack of unnecessary treatments',
+    'the zero waiting time',
+    'the extremely gentle touch',
+    'the transparent upfront pricing'
+  ];
+
+  const ENDING_STYLES = [
+    'End by saying you would definitely visit again.',
+    'End by thanking the team directly.',
+    'End by saying you are glad you chose this clinic.',
+    'End by mentioning you have already recommended them to family.',
+    'End by saying you are looking forward to your next checkup.',
+    'End with a short statement of pure satisfaction.',
+    'End by telling locals in Bathinda this is the place to go.'
+  ];
+
   function buildPrompt() {
     const txArr      = selectedTreatments.size > 0 ? [...selectedTreatments] : ['General Checkup'];
     const txLabel    = txArr.join(', ');
@@ -731,348 +761,71 @@ function triggerConfetti() {
     const name       = nameInput?.value.trim() || '';
     const notes      = notesInput?.value.trim() || '';
 
-    // Doctor assignment
+    const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+    
+    // Doctor assignment - Randomize fallback so it doesn't anchor the LLM
     const hasOrtho  = txArr.some(t => ORTHO_TX.has(t));
     const hasProsth = txArr.some(t => PROSTH_TX.has(t));
     let doctor = '';
     if (hasOrtho && hasProsth) {
-      doctor = 'Dr. Sandeep Kumar (BDS MDS Orthodontics, Ex-Resident AIIMS Delhi) and Dr. Ritu Saneja (Gold Medalist, BDS MDS Prosthodontics, AIIMS Delhi & PGI Chandigarh)';
+      doctor = 'Dr. Sandeep Kumar (BDS MDS Orthodontics) and Dr. Ritu Saneja (Gold Medalist Prosthodontics)';
     } else if (hasOrtho) {
-      doctor = 'Dr. Sandeep Kumar, Consultant Orthodontist (BDS MDS, Ex-Resident AIIMS Delhi, BHU Varanasi)';
+      doctor = 'Dr. Sandeep Kumar, Consultant Orthodontist';
     } else if (hasProsth) {
-      doctor = 'Dr. Ritu Saneja, Gold Medalist Prosthodontist & Implantologist (AIIMS Delhi, PGI Chandigarh)';
+      doctor = 'Dr. Ritu Saneja, Gold Medalist Prosthodontist & Implantologist';
     } else {
-      doctor = 'the expert dental team at The Dental Brace Clinic & Implant Centre';
+      doctor = pick(['the entire team here', 'the clinical staff', 'the doctors', 'the dental team']);
     }
 
-    const pick      = arr => arr[Math.floor(Math.random() * arr.length)];
     const emphasis  = pick(EMPHASIS_CATEGORIES);
     const persona   = pick(PATIENT_PERSONAS);
     const opener    = pick(OPENING_STARTERS);
+    const emotion   = pick(EMOTIONS);
+    const detail    = pick(CLINIC_DETAILS);
+    const ending    = pick(ENDING_STYLES);
 
-    // SEO: one treatment-relevant phrase + one emphasis-category phrase
+    // SEO
     const half  = Math.floor(SEO_PHRASES.length / 2);
     const seo1  = SEO_PHRASES[Math.floor(Math.random() * half)];
     const seo2  = SEO_PHRASES[half + Math.floor(Math.random() * (SEO_PHRASES.length - half))];
 
-    return `# ROLE
-You are an expert Google Review writer specializing in dental clinics.
-Your only objective is to generate authentic, human-like Google reviews that feel as if they were written by real patients.
-Your reviews must NEVER sound AI-generated, promotional, repetitive, or keyword stuffed.
-Every review should appear completely unique even if thousands are generated.
---------------------------------------------------
-# PRIMARY GOAL
-Generate a Google review that:
-• Sounds like it was genuinely written by a satisfied patient.
-• Feels emotional without exaggeration.
-• Reads naturally.
-• Uses conversational English.
-• Builds trust.
-• Is easy to read.
-• Is highly believable.
-• Encourages future patients indirectly.
-The review should help improve Google's understanding of the clinic's quality while never appearing manipulated.
---------------------------------------------------
-# REVIEW LENGTH
-Target:
-80–110 words
-Hard Limit:
-120 words
-Never exceed 120 words.
---------------------------------------------------
-# HUMAN WRITING STYLE
-Write exactly like real people write.
-Not like marketers.
-Not like copywriters.
-Not like AI.
-Mix short and long sentences.
-Occasionally use contractions:
-I'm
-I've
-Didn't
-Can't
-They've
-It's
-Natural pauses are encouraged.
-Avoid perfect grammar every single time.
-The review should feel spontaneous.
---------------------------------------------------
-# VARIATION ENGINE
-Every generated review MUST differ significantly.
-Randomize:
-Opening sentence
-Sentence order
-Story flow
-Vocabulary
-Emotion
-Focus
-Ending
-Review structure
-Perspective
-Length
-Writing rhythm
-Never generate two reviews with similar structure.
-If two reviews could be recognized as templates, rewrite.
---------------------------------------------------
-# ROTATE OPENINGS
-Examples:
-"I recently visited..."
-"I had been delaying my treatment..."
-"My experience at..."
-"After searching for a good dentist..."
-"I was honestly nervous..."
-"I went here for..."
-"I cannot thank the team enough..."
-"This clinic exceeded my expectations..."
-"One of the best healthcare experiences..."
-"My family recommended this clinic..."
-Create unlimited variations.
-Never repeatedly use the same opening.
---------------------------------------------------
-# ROTATE ENDINGS
-Examples:
-Highly recommended.
-Would definitely visit again.
-Thank you to the entire team.
-Glad I chose this clinic.
-Very satisfied with the treatment.
-Couldn't have asked for better care.
-Keep up the excellent work.
-Will recommend to friends and family.
-Looking forward to future visits.
-Generate new endings naturally.
---------------------------------------------------
-# STORY GENERATION
-Every review should tell a tiny story.
-Possible stories:
-First dental visit
-Fear of dentist
-Tooth pain
-Root canal
-Braces
-Cleaning
-Scaling
-Wisdom tooth
-Implant
-Smile makeover
-Emergency visit
-Routine checkup
-Child treatment
-Cosmetic dentistry
-Crown
-Bridge
-Invisalign
-Dentures
-Extraction
-Consultation
-Second opinion
-Family visit
-Follow-up appointment
-Never always choose the same treatment.
---------------------------------------------------
-# HUMAN EMOTIONS
-Randomly include emotions like:
-Relief
-Confidence
-Comfort
-Happiness
-Trust
-Gratitude
-Nervousness before treatment
-Excitement after results
-Satisfaction
-Hope
-Never overuse emotional words.
---------------------------------------------------
-# NATURAL DETAILS
-Occasionally mention:
-Friendly reception
-Clean clinic
-Modern equipment
-Clear explanation
-No unnecessary procedures
-Reasonable waiting time
-Professional staff
-Gentle treatment
-Hygiene
-Transparent pricing
-Comfortable environment
-Painless procedure
-Attention to detail
-Follow-up care
-Never include every detail.
-Choose only 2–4 naturally.
---------------------------------------------------
-# DOCTOR MENTIONS
-If doctor name is available:
-Mention naturally.
-Example:
-Dr. Sandeep Kumar explained everything patiently.
-Dr. Ritu Saneja made me feel comfortable throughout.
-Do not force doctor names.
---------------------------------------------------
-# KEYWORDS
-Use naturally.
-Never stuff keywords.
-Examples:
-Dental clinic
-Dentist
-Dental treatment
-Dental care
-Orthodontist
-Dental implant
-Braces
-Root canal
-Smile
-Teeth cleaning
-Tooth extraction
-Dental consultation
-Only where they fit naturally.
---------------------------------------------------
-# LANGUAGE
-Simple English.
-Grade 6–8 readability.
-Avoid medical jargon unless required.
-Explain naturally.
---------------------------------------------------
-# AUTHENTICITY RULES
-The review must feel imperfect in a good way.
-Avoid sounding scripted.
-Avoid excessive praise.
-Avoid unbelievable claims.
-Never sound like advertising.
-Never promise results.
-Never use fake statistics.
-Never mention discounts unless provided.
-Never invent treatments that were not requested.
---------------------------------------------------
-# WORD CHOICE VARIATION
-Avoid repeatedly using:
-Excellent
-Amazing
-Outstanding
-Best
-Professional
-Friendly
-Highly recommend
-Instead rotate with:
-Wonderful
-Great
-Pleasant
-Comforting
-Reliable
-Patient
-Helpful
-Skilled
-Experienced
-Supportive
-Caring
-Kind
-Knowledgeable
-Attentive
---------------------------------------------------
-# AVOID REPETITION
-Do not repeatedly use:
-"The staff was very friendly."
-"The clinic was very clean."
-"Highly recommended."
-"The doctor explained everything."
-Generate fresh wording.
-Example:
-Everyone made me feel welcome.
-The environment immediately felt comfortable.
-I appreciated how clearly each step was explained.
-The clinic maintains impressive hygiene standards.
---------------------------------------------------
-# RANDOMIZE SENTENCE LENGTH
-Some short.
-Some medium.
-Some longer.
-Never produce identical rhythm.
---------------------------------------------------
-# GOOGLE REVIEW OPTIMIZATION
-Include naturally:
-Trust
-Experience
-Professionalism
-Patient care
-Comfort
-Treatment quality
-Clinic environment
-Communication
-Results
-Never stuff keywords.
-Never sound SEO-written.
---------------------------------------------------
-# EMOJI RULE
-Never use emojis.
---------------------------------------------------
-# FORMATTING
-Single paragraph only.
-No bullet points.
-No headings.
-No quotation marks.
---------------------------------------------------
-# PROHIBITED
-Never write:
-"As an AI..."
-"I highly recommend this clinic to everyone."
-"Five stars."
-"This is the best clinic in the universe."
-"State-of-the-art technology."
-"World-class."
-"Life-changing."
-Marketing language.
-Corporate language.
-Clickbait.
-Fake experiences.
-Overly dramatic claims.
---------------------------------------------------
-# DIVERSITY ENGINE
-Every review should randomly vary:
-Age group
-Patient personality
-Treatment type
-Reason for visit
-Writing style
-Sentence count
-Emotion level
-Vocabulary
-Focus
-Memory shared
-Overall tone
-No two reviews should look generated from the same template.
---------------------------------------------------
-# FINAL QUALITY CHECK
-Before returning the review, verify:
-✓ Sounds like a real patient.
-✓ Under 120 words.
-✓ No repetitive phrases.
-✓ No AI tone.
-✓ No keyword stuffing.
-✓ Natural flow.
-✓ Conversational.
-✓ Emotion feels genuine.
-✓ Includes a believable experience.
-✓ Reads differently from previous reviews.
-✓ Would pass as a genuine Google review written by a human.
+    return `# ROLE & GOAL
+You are a highly skilled ghostwriter writing an authentic Google Review for a patient of The Dental Brace Clinic in Bathinda.
+Your only objective is to write exactly ONE paragraph (80-110 words) that feels spontaneous, believable, and uniquely human.
+DO NOT sound like an AI, a marketer, or a template. 
 
---------------------------------------------------
-# CURRENT PATIENT CONTEXT & STRICT VARIATION SEEDS (FOLLOW EXACTLY)
-Clinic: The Dental Brace Clinic & Implant Centre, Bibi Wala Road, Bathinda, Punjab
-${name ? `Patient Name: ${name}` : 'Patient: Resident of Bathinda / Punjab'}
-Treatment Received: ${txLabel} (${txContext})
-Rating: ${rating}/5 stars
-Doctor: ${doctor}
-${notes ? `Patient Notes/Memory: ${notes}` : ''}
+# PROHIBITED WORDS & CLICHES (DO NOT USE THESE)
+- "Highly recommend"
+- "Five stars"
+- "State-of-the-art"
+- "World-class"
+- "Best clinic in the universe"
+- "Amazing", "Excellent", "Outstanding", "Professional" (use alternatives like wonderful, comforting, reliable, skilled, attentive).
 
-[CRITICAL INSTRUCTIONS FOR THIS SPECIFIC REVIEW]
-1. Mandatory Opening: Start the review exactly with this phrase and continue naturally: "${opener}"
-2. Mandatory Persona/Voice: Write this review as: ${persona}
-3. Primary Narrative Focus: ${emphasis.focus}
-4. SEO Keywords to weave in naturally: "${seo1}" and "${seo2}"
+# PATIENT FACTS
+Name: ${name || 'Bathinda local'}
+Treatment: ${txLabel} (${txContext})
+Doctor Treated By: ${doctor}
+Patient Notes: ${notes || 'None'}
 
-Return ONLY the review text in a single paragraph.
+# STRICT GENERATION INSTRUCTIONS
+To ensure this review is completely unique from all other reviews, you must strictly follow these randomly assigned parameters:
+
+1. EXACT OPENING: You must begin the review with exactly this text, then flow naturally:
+"${opener}"
+
+2. NARRATIVE FOCUS: Build the tiny story of the review around this exact theme:
+${emphasis.focus}
+
+3. WRITING STYLE / PERSONA:
+${persona}
+
+4. REQUIRED EMOTION: The underlying emotion conveyed must be: ${emotion}.
+5. REQUIRED DETAIL: Naturally mention exactly ONE background detail: ${detail}.
+6. ENDING INSTRUCTION: ${ending}
+7. SEO KEYWORDS: Weave these two phrases in completely naturally without feeling forced: "${seo1}" and "${seo2}".
+
+Return ONLY the review text. No formatting, no quotes, no headings. Exactly 80-110 words.
 
 Review:`;
   }
