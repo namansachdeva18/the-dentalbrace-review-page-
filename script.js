@@ -1024,13 +1024,19 @@ Before returning the review, verify:
 ✓ Would pass as a genuine Google review written by a human.
 
 --------------------------------------------------
-# CURRENT PATIENT CONTEXT TO USE
+# CURRENT PATIENT CONTEXT & STRICT VARIATION SEEDS (FOLLOW EXACTLY)
 Clinic: The Dental Brace Clinic & Implant Centre, Bibi Wala Road, Bathinda, Punjab
 ${name ? `Patient Name: ${name}` : 'Patient: Resident of Bathinda / Punjab'}
 Treatment Received: ${txLabel} (${txContext})
 Rating: ${rating}/5 stars
 Doctor: ${doctor}
 ${notes ? `Patient Notes/Memory: ${notes}` : ''}
+
+[CRITICAL INSTRUCTIONS FOR THIS SPECIFIC REVIEW]
+1. Mandatory Opening: Start the review exactly with this phrase and continue naturally: "${opener}"
+2. Mandatory Persona/Voice: Write this review as: ${persona}
+3. Primary Narrative Focus: ${emphasis.focus}
+4. SEO Keywords to weave in naturally: "${seo1}" and "${seo2}"
 
 Return ONLY the review text in a single paragraph.
 
