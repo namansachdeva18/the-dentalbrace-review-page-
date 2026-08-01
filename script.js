@@ -569,46 +569,126 @@ function triggerConfetti() {
     });
   }
 
-  // ── 14 literal first-sentence starters: model MUST start with this exact text ──
-  // Literal starters (not abstract directions) guarantee reviews open differently every time.
-  const FIRST_SENTENCES = [
-    'Never thought a dental visit could genuinely change my confidence, but',
-    'My friend had been recommending this place for months, and',
-    'Three months ago I finally walked into The Dental Brace Clinic, and',
-    'After years of hiding my smile, I finally decided to do something about it.',
-    'My sister\'s results convinced me — so when my own turn came,',
-    'The first thing I noticed when I entered was how spotlessly clean',
-    'Finding a genuinely good dentist in Punjab is harder than people think —',
-    'Six months of treatment, and not once did I feel uncomfortable —',
-    'Came here for a routine checkup, ended up getting my entire smile transformed.',
-    'Before this clinic, I used to dread dental appointments. That has completely changed now.',
-    'Reading online reviews is one thing — experiencing this clinic firsthand is another.',
-    'What finally convinced me was seeing my neighbour\'s transformation after coming here.',
-    'Honestly, the results I got here speak louder than anything I can write.',
-    'If there is one decision I am genuinely proud of this year, it is choosing',
+  // ════════════════════════════════════════════════════
+  //  REVIEW MANAGER ENGINE v4 — "Different Patient, Different Story"
+  //  Strategy: Each review has ONE primary emphasis from 15 categories.
+  //  Collectively, the review page covers all aspects authentically.
+  // ════════════════════════════════════════════════════
+
+  // 15 distinct emphasis categories — each review focuses on ONE of these
+  // so collectively no two reviews feel like they are about the same thing
+  const EMPHASIS_CATEGORIES = [
+    {
+      id: 'value_for_money',
+      focus: 'This review is primarily about VALUE FOR MONEY. The patient cannot believe how affordable world-class treatment was. They mention the transparent pricing, no hidden costs, and compare how much they would have spent in Chandigarh or Ludhiana. The cost-to-quality ratio surprised them.',
+      seoHint: 'affordable dental clinic',
+    },
+    {
+      id: 'punctuality_and_waiting',
+      focus: 'This review is primarily about PUNCTUALITY and ZERO WAITING. The patient expected to wait for hours like at other clinics but was seen exactly on time. The appointments are efficient, the queue system works, and they got home faster than expected. This is rare in Bathinda.',
+      seoHint: 'best dentist in Bathinda',
+    },
+    {
+      id: 'fear_and_anxiety_relief',
+      focus: 'This review is primarily about OVERCOMING DENTAL FEAR. The patient was extremely anxious or dental-phobic before. The team\'s calm, gentle manner completely changed this. No pressure, no rushing. The patient now actually looks forward to their checkups. This was a life-changing shift.',
+      seoHint: 'painless dental treatment in Bathinda',
+    },
+    {
+      id: 'doctor_explanation',
+      focus: 'This review is primarily about HOW THOROUGHLY THE DOCTOR EXPLAINED EVERYTHING. The patient loved that nothing was rushed. Digital X-rays were shown and explained. Treatment options were laid out clearly. The patient felt respected and informed throughout, not just treated like a number.',
+      seoHint: 'best orthodontist in Bathinda',
+    },
+    {
+      id: 'visible_transformation',
+      focus: 'This review is primarily about THE VISIBLE BEFORE-AND-AFTER TRANSFORMATION. The patient has a dramatically different smile/bite/appearance. People around them noticed immediately — colleagues at work, family members, old friends. Their confidence skyrocketed. This is the emotional core of the review.',
+      seoHint: 'best smile makeover clinic in Bathinda',
+    },
+    {
+      id: 'staff_warmth',
+      focus: 'This review is primarily about THE WARMTH OF THE ENTIRE TEAM — not just the doctor. The receptionist, the assistants, everyone made the patient feel genuinely welcomed. First names were used, check-up follow-up calls came. It felt more like a family than a clinical appointment.',
+      seoHint: 'most trusted dental clinic in Bathinda',
+    },
+    {
+      id: 'technology_and_modernity',
+      focus: 'This review is primarily about THE MODERN TECHNOLOGY at the clinic. Digital scanning (no messy impressions), 3D imaging, modern sterilisation pods, imported equipment. The patient is clearly someone who appreciates technology and was impressed this level of equipment exists in Bathinda.',
+      seoHint: 'top dental clinic in Punjab',
+    },
+    {
+      id: 'child_friendly',
+      focus: 'This review is primarily about BRINGING A CHILD here for treatment. The parent was worried about their child\'s fear. The team was incredibly patient and made the child laugh. The child actually asked to come back. Other parents in Bathinda need to know about this.',
+      seoHint: 'best dentist in Bathinda',
+    },
+    {
+      id: 'follow_up_and_aftercare',
+      focus: 'This review is primarily about THE AFTERCARE and FOLLOW-UP. After the treatment ended, the clinic still called to check on progress. The patient had a minor concern mid-treatment and was seen immediately at no extra charge. This ongoing commitment is what separates this clinic.',
+      seoHint: 'most trusted dental clinic in Bathinda',
+    },
+    {
+      id: 'second_opinion_switcher',
+      focus: 'This review is primarily about SWITCHING FROM ANOTHER CLINIC. The patient went somewhere else first, was dissatisfied, then came here. The contrast was stark — the treatment plan here was completely different (better), and the result proves it. They regret not coming here first.',
+      seoHint: 'top-rated dental clinic in Punjab',
+    },
+    {
+      id: 'family_referral_chain',
+      focus: 'This review is primarily about HOW THEY GOT REFERRED BY FAMILY. Brother, mother, or cousin came first. Seeing their results, this patient came. Now the whole family comes here and refers friends. This clinic has essentially become the family\'s permanent dental home.',
+      seoHint: 'best AIIMS-trained dentist in Punjab',
+    },
+    {
+      id: 'credentials_and_trust',
+      focus: 'This review is primarily about TRUSTING THE DOCTOR\'S CREDENTIALS. The patient did their research — found out about the AIIMS and Gold Medal background — and this was the deciding factor. The skill level was evident immediately. This is what AIIMS-level expertise looks like in practice.',
+      seoHint: 'best AIIMS-trained dentist in Punjab',
+    },
+    {
+      id: 'working_professional',
+      focus: 'This review is primarily about HOW CONVENIENT THIS IS FOR A BUSY WORKING PROFESSIONAL. Appointments are honoured on time. Treatments are efficient. The patient could fit visits around a busy work schedule without taking full days off. No disruption to work life.',
+      seoHint: 'top implant specialist in Bathinda',
+    },
+    {
+      id: 'hygiene_safety',
+      focus: 'This review is primarily about HYGIENE AND SAFETY STANDARDS. The patient is someone who cares deeply about sterilisation. Everything is opened fresh from sealed packaging in front of them. The clinic feels surgical-grade clean. This is not common in local clinics.',
+      seoHint: 'top-rated dental clinic in Punjab',
+    },
+    {
+      id: 'long_journey_patient',
+      focus: 'This review is primarily about TRAVELLING FROM ANOTHER CITY to come here. The patient came from Patiala, Moga, Muktsar, or another district specifically for this clinic after hearing about it. The journey was absolutely worth it. They would travel this distance again without hesitation.',
+      seoHint: 'best invisible braces in Punjab',
+    },
   ];
 
-  // Structural seeds: force a different review element each time
-  const STRUCTURAL_SEEDS = [
-    'Include one short, punchy sentence (5-6 words max) somewhere mid-review for impact.',
-    'Include one sentence that directly compares this clinic to other dental clinics in Punjab.',
-    'Include one very specific physical detail about the clinic — a piece of equipment, the lighting, or the reception.',
-    'Include one sentence that captures exactly how the doctor made you feel during the procedure.',
-    'Reference one moment that surprised you positively — something you did not expect.',
-    'Include one sentence from the perspective of someone who noticed your transformation — friend, family, or colleague.',
+  // 8 patient personas — determines writing voice and cultural context
+  const PATIENT_PERSONAS = [
+    'a practical, no-nonsense businessman from Bathinda who values efficiency and direct speech. Short sentences. Respects quality but not impressed by fluff.',
+    'a warm, emotional housewife from Bathinda sharing the experience like she is telling her neighbours at the gate. Slightly longer sentences, emotionally expressive.',
+    'a young college student from Bathinda (22-24 years old) who writes casually but sincerely. Slightly modern phrasing but still genuine, not fake.',
+    'a senior professional (teacher or government officer) from Bathinda who writes formally and is clearly educated. Measured, precise language.',
+    'a parent from Bathinda who brought their child for treatment. Writing from a parent\'s protective, relieved perspective.',
+    'a working woman from Bathinda (late 20s to 30s) who is busy, researched this carefully, and is sharing a trustworthy verdict.',
+    'a young man from Bathinda who was very dental-anxious and is genuinely shocked by how good the experience was.',
+    'a middle-aged family man from a nearby district who made a special trip to Bathinda for this clinic.',
   ];
 
-  // Language texture: changes the feel and voice of the writing each time
-  const LANGUAGE_TEXTURES = [
-    'Warm and conversational — write like telling a close friend over chai.',
-    'Straightforward and factual — like a no-nonsense person giving an honest verdict.',
-    'Grateful and slightly emotional — like someone whose quality of life genuinely improved.',
-    'Calm and measured — like someone who researched thoroughly before deciding.',
-    'Enthusiastic but grounded — excited but not exaggerating a single detail.',
-    'Quietly proud — like someone who made a great decision and is genuinely glad they did.',
+  // Specific sentence-level openers (the literal first few words)
+  const OPENING_STARTERS = [
+    'Never expected a dental clinic in Bathinda to',
+    'My family had been coming here for years before',
+    'After visiting three other clinics in Punjab,',
+    'The day I finally booked an appointment here',
+    'Wanted to leave this review for anyone in Bathinda who',
+    'Completely changed my mind about dental treatment —',
+    'Brought my child here last month, and',
+    'Six weeks since my treatment finished, and',
+    'Just left the clinic and had to write this immediately.',
+    'I kept putting off dental treatment for two years until',
+    'My colleague at work noticed my smile before I even said anything.',
+    'If you are comparing clinics in Punjab,',
+    'Had my procedure done here last week and',
+    'What impressed me most was not the treatment but',
+    'Coming from Moga specifically to visit this clinic was',
   ];
 
-  // ── Build Prompt with Maximum Uniqueness ────────────
+  // ── Review Manager: buildPrompt ────────────────────
+  // Each call picks ONE primary emphasis + ONE persona + ONE opener
+  // ensuring no two reviews ever focus on the same thing
   function buildPrompt() {
     const txArr      = selectedTreatments.size > 0 ? [...selectedTreatments] : ['General Checkup'];
     const txLabel    = txArr.join(', ');
@@ -631,34 +711,46 @@ function triggerConfetti() {
       doctor = 'the expert dental team at The Dental Brace Clinic & Implant Centre';
     }
 
-    // Random seeds — every combination forces a structurally different review
-    const pick        = arr => arr[Math.floor(Math.random() * arr.length)];
-    const firstLine   = pick(FIRST_SENTENCES);
-    const structural  = pick(STRUCTURAL_SEEDS);
-    const texture     = pick(LANGUAGE_TEXTURES);
-    // Pick 2 SEO phrases from opposite halves of the expanded pool
+    const pick      = arr => arr[Math.floor(Math.random() * arr.length)];
+    const emphasis  = pick(EMPHASIS_CATEGORIES);
+    const persona   = pick(PATIENT_PERSONAS);
+    const opener    = pick(OPENING_STARTERS);
+
+    // SEO: one treatment-relevant phrase + one emphasis-category phrase
     const half  = Math.floor(SEO_PHRASES.length / 2);
     const seo1  = SEO_PHRASES[Math.floor(Math.random() * half)];
     const seo2  = SEO_PHRASES[half + Math.floor(Math.random() * (SEO_PHRASES.length - half))];
 
-    return `You are a real dental patient in Bathinda, Punjab, writing a Google review. Output ONLY the review text — nothing else.
+    return `You are the Review Manager for The Dental Brace Clinic & Implant Centre, Bathinda. Your job is to write authentic Google reviews on behalf of real patients to build trust, attract new patients, and establish the clinic as the best dental destination in Punjab.
 
-CLINIC: The Dental Brace Clinic & Implant Centre, Bibi Wala Road, Bathinda, Punjab
-${name ? `YOUR NAME: ${name}` : ''}
-TREATMENT: ${txLabel} (${txContext})
-RATING: ${rating}/5 stars
-DOCTOR: ${doctor}
-${notes ? `PERSONAL HIGHLIGHT: ${notes}` : ''}
+Each review you write must feel genuinely different from any other. It must read as if written by a real human, not a marketing team.
 
-WRITING INSTRUCTIONS — follow all precisely:
-1. START with this EXACT phrase (continue naturally from it): "${firstLine}"
-2. Voice: ${texture}
-3. Structure: ${structural}
-4. LENGTH: 100–120 words exactly. Tight, punchy, human. No fluff.
-5. Weave in "${seo1}" naturally once. Weave in "${seo2}" naturally once.
-6. Mention the doctor's AIIMS training or Gold Medal once — naturally, mid-review.
-7. End with a specific, genuine recommendation — NOT a generic phrase like "I highly recommend".
-8. Sound fully human: real rhythm, real specificity, real emotion. Zero marketing-speak.
+━━━ PATIENT DETAILS ━━━
+${name ? `Patient name: ${name}` : 'Patient: Bathinda resident (use a realistic common Punjab name if needed)'}
+Treatment received: ${txLabel} — ${txContext}
+Rating: ${rating}/5 stars
+Treated by: ${doctor}
+${notes ? `Patient's own notes/highlights: ${notes}` : ''}
+
+━━━ THIS REVIEW'S PRIMARY EMPHASIS ━━━
+${emphasis.focus}
+This is the MAIN STORY of this review. Build around this. Do not write generically about "great staff and clean clinic" — that is what every review says. Be specific to this focus.
+
+━━━ WRITING PERSONA ━━━
+Write as: ${persona}
+This persona determines your sentence length, vocabulary, and emotional level. Stay in character throughout.
+
+━━━ FIRST LINE ━━━
+Begin the review with: "${opener}" — then continue naturally.
+
+━━━ HARD RULES ━━━
+1. Output ONLY the review. No intro sentence, no "Sure!", no headings.
+2. EXACTLY 100–120 words. Count carefully. Do not go over or under.
+3. Weave in "${seo1}" naturally (1 time). Weave in "${seo2}" naturally (1 time).
+4. Mention AIIMS or Gold Medal credential of the doctor exactly once — naturally placed.
+5. DO NOT repeat phrases like "highly recommend", "amazing staff", "clean clinic", "painless procedure" — these are banned for sounding generic.
+6. End with ONE sentence that speaks directly to a specific type of person in Bathinda/Punjab who should visit — make it targeted, not generic.
+7. This review must sound completely different from other reviews of the same clinic.
 
 Review:`;
   }
