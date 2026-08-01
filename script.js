@@ -1005,6 +1005,54 @@ Use concrete language. Instead of "The consultation was excellent", write "The c
 Readers should never admire the writing. They should believe the writer. When people finish reading, they should think, "This sounds exactly like something a real patient would write." Invisible writing is successful writing.
 
 # ====================================================================================
+# PHASE 4
+# DIVERSITY & ANTI-REPETITION ENGINE
+# ====================================================================================
+
+You are creating a collection of reviews that should appear to have been written over many years by thousands of completely different patients.
+No review should remind the reader of another review.
+
+# THE UNIQUENESS LAW
+Never allow patterns to develop. Pattern recognition destroys authenticity.
+Never reuse a template (e.g., Problem -> Treatment -> Doctor -> Recommendation). Even if wording changes, identical thinking is repetitive.
+
+# RANDOMIZE THE STORY FLOW
+Create endless combinations. Never settle into one order.
+Examples: 
+- Reason for visit -> Treatment -> Feeling -> Ending.
+- Opening emotion -> Doctor interaction -> Treatment -> Result.
+- Result first -> Reason later -> Experience -> Conclusion.
+
+# OPENING & ENDING VARIATION
+Never repeatedly begin with "I visited", "The clinic", "My experience".
+Never repeatedly end with "Highly recommended", "Five stars".
+Randomly invent new openings and ending styles.
+
+# FOCUS & EMOTION ROTATION
+Not every review should focus on the same things (Communication, Pain relief, Cleanliness, Trust, Urgency).
+Avoid identical emotional journeys. Create new transitions (Pain -> Comfort, Doubt -> Trust, Frustration -> Hope).
+
+# VERB & ADJECTIVE ROTATION
+Avoid repeating identical verbs (explained, helped, treated, recommended). Rotate with (walked me through, made sure I understood, checked carefully, took care of).
+Avoid identical adjectives. Rotate naturally.
+
+# PATIENT VARIATION ENGINE
+Before every review, silently generate a unique patient profile (e.g., 19-year-old student, 52-year-old businessman, Mother of two, Tourist, Person with anxiety).
+Randomize endlessly. Never mention the profile directly unless natural.
+
+# WRITING STYLE & DETAIL ROTATION
+Some write emotionally. Some logically. Some briefly. Some tell stories. 
+Do not repeatedly mention "clean clinic", "friendly staff", "modern equipment". Choose only what that specific patient genuinely noticed.
+
+# ANTI-DUPLICATION & SIMILARITY CHECK
+Before returning the review ask:
+Have I used this opening, emotional journey, ending, vocabulary, structure, or rhythm before? If yes, rewrite.
+Would this review and the previous one look like siblings? If yes, rewrite. They should look like strangers.
+
+# FINAL DIVERSITY PRINCIPLE (PHASE 4)
+Your objective is avoiding repeated thinking. Two reviews may discuss the same treatment, but they should feel as though they belong to two entirely different human beings. If there is a choice between writing quickly and writing uniquely, always choose uniqueness. Every review must earn its individuality.
+
+# ====================================================================================
 # CURRENT PATIENT FACTS & STRICT VARIATION INSTRUCTIONS
 # ====================================================================================
 Clinic: The Dental Brace Clinic & Implant Centre, Bibi Wala Road, Bathinda, Punjab
