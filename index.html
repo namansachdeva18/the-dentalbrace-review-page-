@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0F3D3E" />
+
+  <!-- SEO -->
+  <title>Rate Us on Google | The Dental Brace Clinic & Implant Centre, Bathinda</title>
+  <meta name="description" content="Share your experience at The Dental Brace Clinic. Trusted dental care by Dr. Sandeep Kumar & Dr. Ritu Saneja in Bathinda — Orthodontics, Implants & Smile Design." />
+  <meta name="keywords" content="Dental Brace Clinic Bathinda review, dentist Bathinda, Dr Sandeep Kumar, Dr Ritu Saneja, braces Bathinda, Google review dental" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Review The Dental Brace Clinic | Bathinda" />
+  <meta property="og:description" content="Help others find trusted dental care. Leave us a Google review — it only takes 2 minutes!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./logo.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Review The Dental Brace Clinic | Bathinda" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="./logo.png" type="image/png" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+  <!-- ============================================
+       PAGE LOADING OVERLAY
+  ============================================= -->
+  <div id="page-loader" role="status" aria-label="Loading The Dental Brace Clinic">
+    <div class="loader-logo-wrap">
+      <div class="loader-logo-ring-2"></div>
+      <div class="loader-logo-ring"></div>
+      <div class="loader-logo-glow"></div>
+      <img
+        src="./logo.png"
+        alt="The Dental Brace Clinic Logo"
+        class="loader-logo-img"
+      />
+    </div>
+    <div class="loader-name">
+      The Dental Brace Clinic
+      <span>Bathinda · Est. 2019</span>
+    </div>
+    <div class="loader-bar-wrap">
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       CONFETTI CANVAS (Overlay)
+  ============================================= -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- ============================================
+       SECTION 1 — HERO
+  ============================================= -->
+  <section class="hero" id="hero">
+    <canvas id="particles-canvas"></canvas>
+
+    <div class="hero__content">
+      <!-- Logo -->
+      <img
+        src="./logo.png"
+        srcset="./logo.webp 1x, ./logo.png 1x"
+        loading="lazy"
+        alt="The Dental Brace Clinic Logo"
+        class="hero__logo"
+        id="clinic-logo"
+        onerror="this.style.display='none'"
+        data-src="./logo.png"
+        data-srcset="./logo.webp 1x, ./logo.png 1x"
+      />
+
+      <!-- Badge -->
+      <div class="hero__badge">
+        🦷 Bathinda's Trusted Clinic
+      </div>
+
+      <!-- Title -->
+      <h1 class="hero__title">
+        <span class="gradient-text">The Dental Brace</span><br />
+        Clinic & Implant Centre
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="hero__subtitle">
+        Advanced Orthodontic & Prosthodontic Care Under One Roof — Bibi Wala Road, Bathinda
+      </p>
+
+      <!-- Stars -->
+      <div class="hero__stars" aria-label="5.0 out of 5 stars">
+        <span class="star-icon">⭐</span>
+        <span class="star-icon">⭐</span>
+        <span class="star-icon">⭐</span>
+        <span class="star-icon">⭐</span>
+        <span class="star-icon">⭐</span>
+      </div>
+      <p class="hero__rating-text">5.0 ★ · Trusted by 50,000+ patients</p>
+
+      <!-- CTA Buttons -->
+      <div class="hero__cta">
+        <a
+          href="https://www.google.com/search?q=The+DentalBrace+Clinic+%26+Implant+Centre+Reviews&zx=1785571953917#sv=CAESzQEKuQEStgEKd0FKaVQ0dExMZ3lGaktBMXJETDBRU1l3dkdlZzk3VlZHOGRFalJCcGpuUk8yMEFlbV9KaUg4dTVJeUlhTklSX0hnQjJzX19INVNaNHJOaWx2LWpZczB3Z1RROEZ6cHgzU0k0Sm9keWJzSWM5NzhjR1Z2am1KdjhJEhdkYXB0YXBlS0Q1T3I0LUVQLW9PeGlBURoiQURzcjlmUTJEcXVrX1Z2QzhRaWgzWWRBak9YclJCekJFURIEODA1MRoBMyoAMAA4AUAAGAAgtqaY6gNKAhAC"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-review"
+          id="hero-review-btn"
+          aria-label="Leave a Google Review"
+        >
+          ⭐ Rate Us on Google
+        </a>
+        <a
+          href="https://wa.me/917496849392?text=Hi%2C%20I'd%20like%20to%20book%20an%20appointment%20at%20The%20Dental%20Brace%20Clinic."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-book"
+          aria-label="Book an appointment via WhatsApp"
+        >
+          📅 Book Appointment
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="hero__scroll" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ============================================
+       AI REVIEW GENERATOR (NEW)
+  ============================================= -->
+  <section class="ai-section" id="ai-generator">
+    <div class="ai-section__inner">
+
+      <!-- Header -->
+      <div class="ai-section__header animate-in">
+        <div class="ai-badge">
+          <span class="ai-badge__dot"></span>
+          <span class="ai-badge__dot"></span>
+          <span class="ai-badge__dot"></span>
+          ✨ AI Review Writer
+        </div>
+        <h2 class="ai-section__title">
+          Tell Us About Your<br />
+          <span class="ai-gradient-text">Treatment & We'll Write<br />Your Review</span>
+        </h2>
+        <p class="ai-section__subtitle">
+          Our AI writes a genuine, personalised review in seconds.<br />
+          Just copy &amp; paste it on Google — done! 🎉
+        </p>
+      </div>
+
+      <!-- Step 1: Treatment Selection -->
+      <div class="ai-card animate-in animate-in--delay-1">
+        <div class="ai-card__step">
+          <span class="step-num">1</span>
+          <span class="step-label">What treatment did you get?</span>
+        </div>
+        <div class="treatment-chips" id="treatment-chips" role="group" aria-label="Select your treatments">
+          <button class="chip" data-value="Invisalign" type="button">🤍 Invisalign</button>
+          <button class="chip" data-value="Dental Implants" type="button">🔩 Dental Implants</button>
+          <button class="chip" data-value="Smile Makeover" type="button">💫 Smile Makeover</button>
+          <button class="chip" data-value="Braces" type="button">⛓️ Braces</button>
+          <button class="chip" data-value="Teeth Whitening" type="button">🌟 Teeth Whitening</button>
+          <button class="chip" data-value="Veneers" type="button">🛡️ Veneers</button>
+          <button class="chip" data-value="Root Canal" type="button">⚡ Root Canal</button>
+          <button class="chip" data-value="Kids Dentistry" type="button">🧸 Kids Dentistry</button>
+          <button class="chip" data-value="Digital Scan" type="button">📸 Digital Scan</button>
+          <button class="chip" data-value="Dentofacial Ortho" type="button">📐 Dentofacial Ortho</button>
+          <button class="chip" data-value="All-on-4" type="button">⚙️ All-on-4</button>
+          <button class="chip" data-value="General Checkup" type="button">🩺 General Checkup</button>
+          <button class="chip" data-value="Gum Treatment & Scaling" type="button">🚿 Gum Treatment & Scaling</button>
+          <button class="chip" data-value="Wisdom Tooth Removal" type="button">🦷 Wisdom Tooth Removal</button>
+          <button class="chip" data-value="Composite Bonding" type="button">🪄 Composite Bonding</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Experience Rating -->
+      <div class="ai-card animate-in animate-in--delay-2">
+        <div class="ai-card__step">
+          <span class="step-num">2</span>
+          <span class="step-label">Rate your overall experience</span>
+        </div>
+        <div class="ai-star-row" id="ai-star-row" role="group" aria-label="Rate your experience">
+          <span class="ai-star" data-val="1" tabindex="0" role="button" aria-label="1 star">⭐</span>
+          <span class="ai-star" data-val="2" tabindex="0" role="button" aria-label="2 stars">⭐</span>
+          <span class="ai-star" data-val="3" tabindex="0" role="button" aria-label="3 stars">⭐</span>
+          <span class="ai-star" data-val="4" tabindex="0" role="button" aria-label="4 stars">⭐</span>
+          <span class="ai-star" data-val="5" tabindex="0" role="button" aria-label="5 stars">⭐</span>
+        </div>
+        <p class="ai-star-label" id="ai-star-label">Tap to rate</p>
+      </div>
+
+      <!-- Step 3: Personal Touch -->
+      <div class="ai-card animate-in animate-in--delay-2">
+        <div class="ai-card__step">
+          <span class="step-num">3</span>
+          <span class="step-label">Anything specific to mention? <span style="opacity:0.5">(Optional)</span></span>
+        </div>
+        <div class="ai-inputs">
+          <input
+            type="text"
+            id="ai-patient-name"
+            class="ai-input"
+            placeholder="Your first name (e.g. Priya)"
+            maxlength="30"
+            autocomplete="given-name"
+          />
+          <textarea
+            id="ai-notes"
+            class="ai-textarea"
+            placeholder="e.g. Staff was very gentle, no pain at all, results were amazing…"
+            rows="3"
+            maxlength="200"
+          ></textarea>
+          <div class="ai-char-count"><span id="ai-notes-count">0</span>/200</div>
+        </div>
+      </div>
+
+      <!-- Generate Button -->
+      <button
+        class="btn-generate animate-in animate-in--delay-3"
+        id="ai-generate-btn"
+        type="button"
+        aria-label="Generate AI review"
+      >
+        <span class="btn-generate__icon">✨</span>
+        <span class="btn-generate__text">Generate My Review</span>
+        <span class="btn-generate__loader" id="ai-loader" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+
+      <!-- Output Card (hidden until generated) -->
+      <div class="ai-output-card animate-in" id="ai-output-card" aria-live="polite" style="display:none;">
+        <div class="ai-output-card__header">
+          <span class="ai-output-badge">✨ AI Generated — Edit if you like!</span>
+          <button class="ai-regen-btn" id="ai-regen-btn" type="button" aria-label="Regenerate review">
+            🔄 Regenerate
+          </button>
+        </div>
+        <textarea
+          class="ai-output-textarea"
+          id="ai-output-text"
+          rows="6"
+          aria-label="Generated review text — you can edit this"
+        ></textarea>
+        <div class="ai-output-actions">
+          <button class="btn-copy" id="ai-copy-btn" type="button" aria-label="Copy review to clipboard">
+            <span id="copy-icon">📋</span>
+            <span id="copy-label">Copy Review</span>
+          </button>
+          <a
+            href="https://www.google.com/search?q=The+DentalBrace+Clinic+%26+Implant+Centre+Reviews&zx=1785571953917#sv=CAESzQEKuQEStgEKd0FKaVQ0dExMZ3lGaktBMXJETDBRU1l3dkdlZzk3VlZHOGRFalJCcGpuUk8yMEFlbV9KaUg4dTVJeUlhTklSX0hnQjJzX19INVNaNHJOaWx2LWpZczB3Z1RROEZ6cHgzU0k0Sm9keWJzSWM5NzhjR1Z2am1KdjhJEhdkYXB0YXBlS0Q1T3I0LUVQLW9PeGlBURoiQURzcjlmUTJEcXVrX1Z2QzhRaWgzWWRBak9YclJCekJFURIEODA1MRoBMyoAMAA4AUAAGAAgtqaY6gNKAhAC"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-open-google"
+            id="ai-open-google-btn"
+            aria-label="Open Google Reviews to paste"
+          >
+            <span class="google-g" aria-hidden="true">G</span>
+            Open Google →
+          </a>
+        </div>
+        <p class="ai-output-hint">
+          💡 Copy your review above, then click "Open Google" — paste it there and hit Submit!
+        </p>
+      </div>
+
+      <!-- Error State -->
+      <div class="ai-error" id="ai-error" style="display:none;" role="alert">
+        <span>⚠️</span>
+        <span id="ai-error-msg">Something went wrong. Please try again.</span>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================
+       SECTION 2 — GOOGLE REVIEW CTA
+  ============================================= -->
+  <section class="review-section" id="leave-review">
+    <div class="review-section__inner">
+      <div class="section-eyebrow animate-in">
+        <span>🌟</span> Share Your Experience
+      </div>
+
+      <h2 class="review-section__title animate-in animate-in--delay-1">
+        Your Review Changes<br />
+        <span style="color: var(--accent)">Someone's Smile</span>
+      </h2>
+
+      <p class="review-section__desc animate-in animate-in--delay-2">
+        Happy with your treatment? A 2-minute Google review helps families in Bathinda find
+        trusted dental care — and it means the world to our team.
+      </p>
+
+      <!-- Interactive Star Rating Widget -->
+      <div class="star-rating-widget animate-in animate-in--delay-2" id="star-widget" role="group" aria-label="Rate your experience">
+        <span class="star" data-value="1" role="button" aria-label="1 star" tabindex="0">⭐</span>
+        <span class="star" data-value="2" role="button" aria-label="2 stars" tabindex="0">⭐</span>
+        <span class="star" data-value="3" role="button" aria-label="3 stars" tabindex="0">⭐</span>
+        <span class="star" data-value="4" role="button" aria-label="4 stars" tabindex="0">⭐</span>
+        <span class="star" data-value="5" role="button" aria-label="5 stars" tabindex="0">⭐</span>
+      </div>
+      <p class="star-hint" id="star-hint">Tap a star to rate your experience</p>
+
+      <div class="review-section__cta-wrap animate-in animate-in--delay-3">
+        <a
+          href="https://www.google.com/search?q=The+DentalBrace+Clinic+%26+Implant+Centre+Reviews&zx=1785571953917#sv=CAESzQEKuQEStgEKd0FKaVQ0dExMZ3lGaktBMXJETDBRU1l3dkdlZzk3VlZHOGRFalJCcGpuUk8yMEFlbV9KaUg4dTVJeUlhTklSX0hnQjJzX19INVNaNHJOaWx2LWpZczB3Z1RROEZ6cHgzU0k0Sm9keWJzSWM5NzhjR1Z2am1KdjhJEhdkYXB0YXBlS0Q1T3I0LUVQLW9PeGlBURoiQURzcjlmUTJEcXVrX1Z2QzhRaWgzWWRBak9YclJCekJFURIEODA1MRoBMyoAMAA4AUAAGAAgtqaY6gNKAhAC"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-google-review"
+          id="main-review-btn"
+          aria-label="Write a Google Review"
+        >
+          <span class="google-g" aria-hidden="true">G</span>
+          Write a Google Review
+        </a>
+      </div>
+
+      <div class="review-trust">
+        <span>🔒</span>
+        <span>Opens Google · Takes only 2 minutes</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================
+       SECTION 3 — STATS
+  ============================================= -->
+  <section class="stats-section" id="stats">
+    <div class="stats-grid">
+      <div class="stat-card animate-in">
+        <div class="stat-card__number">
+          <span class="counter" data-target="5500" data-suffix="+">0</span>
+        </div>
+        <div class="stat-card__label">Braces & Aligner Cases</div>
+      </div>
+      <div class="stat-card animate-in animate-in--delay-1">
+        <div class="stat-card__number">
+          <span class="counter" data-target="5000" data-suffix="+">0</span>
+        </div>
+        <div class="stat-card__label">Implants Placed</div>
+      </div>
+      <div class="stat-card animate-in animate-in--delay-2">
+        <div class="stat-card__number">
+          <span class="counter" data-target="10" data-suffix="+">0</span>
+        </div>
+        <div class="stat-card__label">Years Experience</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================
+       SECTION 4 — MEET YOUR DOCTORS
+  ============================================= -->
+  <section class="doctors-section" id="doctors">
+    <div class="section-header animate-in">
+      <div class="section-eyebrow">👨‍⚕️ Our Specialists</div>
+      <h2>Meet Your Expert<br /><span style="color:var(--accent)">Dental Team</span></h2>
+      <p>AIIMS-trained specialists dedicated to your best smile</p>
+    </div>
+
+    <!-- Combined Photo -->
+    <div class="doctors-photo-wrap animate-in animate-in--delay-1">
+      <img
+        src="./doctors.jpg"
+        loading="lazy"
+        alt="Dr. Sandeep Kumar and Dr. Ritu Saneja — The Dental Brace Clinic"
+        class="doctors-photo"
+      />
+      <div class="doctors-photo-caption">
+        Dr. Sandeep Kumar &amp; Dr. Ritu Saneja<br />
+        <span style="font-size:0.75rem;font-weight:400;opacity:0.8">The Dental Brace Clinic &amp; Implant Centre</span>
+      </div>
+    </div>
+
+    <!-- Doctor Cards -->
+    <div class="doctors-cards">
+      <div class="doctor-card animate-in animate-in--delay-2">
+        <div class="doctor-card__avatar">👨‍⚕️</div>
+        <div class="doctor-card__info">
+          <div class="doctor-card__name">Dr. Sandeep Kumar</div>
+          <div class="doctor-card__specialty">Consultant Orthodontist</div>
+          <div class="doctor-card__creds">
+            <span class="cred-badge">BDS, MDS (Orthodontics)</span>
+            <span class="cred-badge">BHU Varanasi</span>
+            <span class="cred-badge">Ex-Resident AIIMS Delhi</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="doctor-card animate-in animate-in--delay-3">
+        <div class="doctor-card__avatar">👩‍⚕️</div>
+        <div class="doctor-card__info">
+          <div class="doctor-card__name">Dr. Ritu Saneja</div>
+          <div class="doctor-card__specialty">Consultant Prosthodontist &amp; Implantologist</div>
+          <div class="doctor-card__creds">
+            <span class="cred-badge">BDS, MDS (Prosthodontics)</span>
+            <span class="cred-badge">Gold Medalist</span>
+            <span class="cred-badge">AIIMS Delhi</span>
+            <span class="cred-badge">PGI Chandigarh</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================
+       SECTION 5 — PATIENT TESTIMONIALS
+  ============================================= -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="section-header animate-in">
+      <div class="section-eyebrow">💬 Patient Stories</div>
+      <h2>What Our Patients<br /><span style="color:var(--accent)">Are Saying</span></h2>
+    </div>
+
+    <div class="testimonials-scroll" id="testimonials-scroll">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+        </div>
+        <p class="testimonial-text">
+          "Got my braces done here. Dr. Sandeep is incredibly skilled and patient. My smile has
+          completely transformed. The clinic is hygienic and the staff is very welcoming!"
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">PK</div>
+          <div>
+            <div class="testimonial-name">Priya Kaur</div>
+            <div class="testimonial-date">Google Review · Braces Treatment</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+        </div>
+        <p class="testimonial-text">
+          "Dr. Ritu is the best implant specialist I've met. My full mouth rehabilitation was
+          done perfectly. She explained every step with so much care. Highly recommended!"
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">RS</div>
+          <div>
+            <div class="testimonial-name">Rajesh Sharma</div>
+            <div class="testimonial-date">Google Review · Dental Implants</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+        </div>
+        <p class="testimonial-text">
+          "Invisalign treatment done beautifully. Results in less time than expected. Both
+          doctors are highly professional — feels like AIIMS-quality care right here in Bathinda!"
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">MG</div>
+          <div>
+            <div class="testimonial-name">Manpreet Gill</div>
+            <div class="testimonial-date">Google Review · Invisalign</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Dots -->
+    <div class="scroll-dots" id="scroll-dots">
+      <div class="scroll-dot active" data-index="0"></div>
+      <div class="scroll-dot" data-index="1"></div>
+      <div class="scroll-dot" data-index="2"></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================
+       SECTION 6 — SERVICES
+  ============================================= -->
+  <section class="services-section" id="services">
+    <div class="section-header animate-in">
+      <div class="section-eyebrow">🦷 Our Expertise</div>
+      <h2>Comprehensive<br /><span style="color:var(--accent)">Dental Services</span></h2>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card animate-in">
+        <span class="service-card__icon">😁</span>
+        <div class="service-card__title">Orthodontics &amp; Braces</div>
+        <div class="service-card__desc">Invisalign, Metal, Ceramic &amp; Damon System braces</div>
+      </div>
+      <div class="service-card animate-in animate-in--delay-1">
+        <span class="service-card__icon">🦷</span>
+        <div class="service-card__title">Dental Implants</div>
+        <div class="service-card__desc">Single tooth to All-on-4/6 full mouth reconstruction</div>
+      </div>
+      <div class="service-card animate-in animate-in--delay-2">
+        <span class="service-card__icon">✨</span>
+        <div class="service-card__title">Smile Design</div>
+        <div class="service-card__desc">E-Max veneers, composite restorations &amp; digital planning</div>
+      </div>
+      <div class="service-card animate-in animate-in--delay-3">
+        <span class="service-card__icon">🛡️</span>
+        <div class="service-card__title">Preventive Care</div>
+        <div class="service-card__desc">Cleanings, fluoride therapy &amp; digital imaging</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 7 — CONTACT & FIND US
+  ============================================= -->
+  <section class="contact-section" id="contact">
+    <div class="contact-section__inner">
+      <div class="section-eyebrow animate-in">📍 Find Us</div>
+      <h2 class="animate-in animate-in--delay-1">Visit Us in Bathinda</h2>
+
+      <div class="contact-info-card animate-in animate-in--delay-2">
+        <div class="contact-info-row">
+          <div class="contact-info-row__icon">📍</div>
+          <div class="contact-info-row__text">
+            <div class="contact-info-row__label">Address</div>
+            Bibi Wala Road, Opp. HP Petrol Pump,<br />
+            Near LIC Office, Bathinda, Punjab
+          </div>
+        </div>
+        <div class="contact-info-row">
+          <div class="contact-info-row__icon">📞</div>
+          <div class="contact-info-row__text">
+            <div class="contact-info-row__label">Phone</div>
+            74968-49392
+          </div>
+        </div>
+        <div class="contact-info-row">
+          <div class="contact-info-row__icon">✉️</div>
+          <div class="contact-info-row__text">
+            <div class="contact-info-row__label">Email</div>
+            thedentalbrace2019@gmail.com
+          </div>
+        </div>
+        <div class="contact-info-row">
+          <div class="contact-info-row__icon">🕐</div>
+          <div class="contact-info-row__text">
+            <div class="contact-info-row__label">Hours</div>
+            Mon – Sat: 10:00 AM – 7:00 PM
+          </div>
+        </div>
+      </div>
+
+      <div class="action-buttons animate-in animate-in--delay-3">
+        <a
+          href="https://maps.google.com/?q=The+Dental+Brace+Clinic+Bathinda"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="action-btn action-btn--maps"
+          aria-label="Open in Google Maps"
+        >
+          <span class="action-btn__icon">🗺️</span>
+          Google Maps
+        </a>
+        <a
+          href="https://wa.me/917496849392?text=Hi%2C%20I'd%20like%20to%20book%20an%20appointment."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="action-btn action-btn--wa"
+          aria-label="Chat on WhatsApp"
+        >
+          <span class="action-btn__icon">💬</span>
+          WhatsApp
+        </a>
+        <a
+          href="https://www.instagram.com/thedentalbrace"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="action-btn action-btn--insta"
+          aria-label="Follow on Instagram"
+        >
+          <span class="action-btn__icon">📸</span>
+          Instagram
+        </a>
+        <a
+          href="tel:+917496849392"
+          class="action-btn action-btn--call"
+          aria-label="Call the clinic"
+        >
+          <span class="action-btn__icon">📞</span>
+          Call Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+  ============================================= -->
+  <footer class="footer">
+    <p class="footer__text">
+      © 2025 The Dental Brace Clinic &amp; Implant Centre, Bathinda.<br />
+      Bibi Wala Road, Opp. HP Petrol Pump · 74968-49392 ·
+      <a href="mailto:thedentalbrace2019@gmail.com">thedentalbrace2019@gmail.com</a>
+    </p>
+  </footer>
+
+  <!-- ============================================
+       STICKY BOTTOM REVIEW BAR
+  ============================================= -->
+  <div class="sticky-review-bar" id="sticky-bar" role="complementary" aria-label="Quick review action">
+    <div class="sticky-review-bar__inner">
+      <a
+        href="https://www.google.com/search?q=The+DentalBrace+Clinic+%26+Implant+Centre+Reviews&zx=1785571953917#sv=CAESzQEKuQEStgEKd0FKaVQ0dExMZ3lGaktBMXJETDBRU1l3dkdlZzk3VlZHOGRFalJCcGpuUk8yMEFlbV9KaUg4dTVJeUlhTklSX0hnQjJzX19INVNaNHJOaWx2LWpZczB3Z1RROEZ6cHgzU0k0Sm9keWJzSWM5NzhjR1Z2am1KdjhJEhdkYXB0YXBlS0Q1T3I0LUVQLW9PeGlBURoiQURzcjlmUTJEcXVrX1Z2QzhRaWgzWWRBak9YclJCekJFURIEODA1MRoBMyoAMAA4AUAAGAAgtqaY6gNKAhAC"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-sticky-review"
+        id="sticky-review-btn"
+        aria-label="Leave a Google Review"
+      >
+        ⭐ Leave a Google Review
+      </a>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "dental-brace-clinic",
+  "version": "1.0.0",
+  "description": "Dental Brace Clinic Google Review Landing Page",
+  "scripts": {
+    "dev": "npx -y serve ."
+  },
+  "author": "",
+  "license": "ISC"
+}

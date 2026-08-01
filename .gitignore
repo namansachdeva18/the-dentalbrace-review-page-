@@ -1,0 +1,5 @@
+node_modules/
+.env
+test_api.js
+test_prompt.js
+.DS_Store
