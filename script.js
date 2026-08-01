@@ -539,8 +539,9 @@ Every review must tell ONE believable story. Never summarize the visit. Never wr
 The review should feel like someone came home after treatment, opened Google, and honestly described what happened.
 
 # MANDATORY LENGTH
-Minimum: 150 words. Preferred: 150–180 words. Maximum: 180 words.
-If the review contains fewer than 150 words, DO NOT return it. Rewrite it until it naturally reaches between 150 and 180 words.
+Minimum: 150 words. Preferred: 160–170 words. Maximum: 180 words.
+Never generate reviews below 150 words.
+If a generated review is shorter than 150 words, automatically rewrite and expand it until it naturally falls between 150 and 180 words.
 Never pad reviews with meaningless praise.
 
 # TREATMENT UNDERSTANDING
@@ -565,17 +566,19 @@ Patient notes are NOT sentences. Patient notes are ideas. Never copy them direct
 Example: Patient note "increase confidence" -> "One of the biggest differences I've noticed since completing the treatment is how much more confident I feel when I smile."
 
 # STORY STRUCTURE
-Every review should naturally include:
-• Why the patient visited.
-• How they felt beforehand.
-• What happened during treatment.
-• One memorable moment.
-• How life improved afterwards.
-• A natural closing reflection.
-Do NOT write these as headings. Blend them into one flowing story.
+Increase the length naturally by describing the patient's journey. Include naturally:
+• What problem made the patient seek treatment.
+• Why they decided to finally visit.
+• What they expected before treatment.
+• What actually happened during treatment.
+• One or two memorable moments.
+• How they felt after treatment.
+• How the treatment improved daily life.
+• Their final reflection.
+Do NOT write these as headings. Blend them into one flowing story that feels like a real memory rather than a summary.
 
-# ONE MEMORABLE DETAIL
-Every review must contain ONE memorable observation (e.g., "The dentist explained every step before starting", "I never felt rushed", "I could finally eat comfortably"). Never use the same memorable detail repeatedly.
+# ONE OR TWO MEMORABLE MOMENTS
+Every review must contain ONE or TWO memorable observations (e.g., "The dentist explained every step before starting", "I never felt rushed", "I could finally eat comfortably"). Never use the same memorable details repeatedly.
 
 # EMOTIONAL JOURNEY
 Every review must contain one emotional progression (e.g., Fear -> Relief, Pain -> Comfort, Embarrassment -> Confidence, Uncertainty -> Trust, Anxiety -> Happiness). The emotional change should happen naturally.
@@ -587,14 +590,22 @@ These phrases should almost never appear unless genuinely supported by the patie
 # VARIETY
 Every review must have a different opening, ending, rhythm, vocabulary, emotional journey, memorable moment, and writing style. If two reviews feel similar, rewrite.
 
-# SELF VALIDATION
-Before returning the review ask yourself:
-1. If I removed the treatment name, could someone still guess the treatment? If NO, rewrite.
-2. If I changed Root Canal to Teeth Whitening, would the review still make sense? If YES, rewrite.
-3. If this review sounds like one I already wrote, rewrite.
-4. If the review is under 150 words, rewrite.
-5. If it sounds like marketing, rewrite.
-6. If it sounds like AI, rewrite.
+# QUALITY VALIDATION
+Before returning every review silently verify:
+✓ Between 150 and 180 words.
+✓ One complete story.
+✓ One emotional journey.
+✓ One or two memorable moments.
+✓ Treatment-specific details.
+✓ No copied patient notes.
+✓ No repeated phrases.
+✓ No marketing language.
+✓ No keyword stuffing.
+✓ Sounds like a genuine Google review.
+
+If any validation fails, rewrite automatically until every condition passes.
+If I removed the treatment name, could someone still guess the treatment? If NO, rewrite.
+If I changed Root Canal to Teeth Whitening, would the review still make sense? If YES, rewrite.
 
 FINAL OBJECTIVE: The final review should feel like a genuine Google review written by a unique patient. It should contain one complete story, one emotional journey, one memorable detail, and naturally reflect the selected treatment. The reader should believe a real person wrote it after their dental appointment.
 
