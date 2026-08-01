@@ -468,7 +468,7 @@ function triggerConfetti() {
     'Wisdom Tooth Removal':    'surgical / simple extraction of impacted or problematic wisdom teeth',
   };
 
-  // SEO keyword pools — one chosen per generation for variety
+  // SEO keyword pools — randomly picked each generation (expanded to 14 phrases)
   const SEO_PHRASES = [
     'best dentist in Bathinda',
     'top dental clinic in Punjab',
@@ -478,6 +478,12 @@ function triggerConfetti() {
     'top-rated dental clinic in Punjab',
     'best smile makeover clinic in Bathinda',
     'best AIIMS-trained dentist in Punjab',
+    'affordable dental clinic in Bathinda',
+    'painless dental treatment in Bathinda',
+    'best teeth straightening clinic in Punjab',
+    'top implant specialist in Bathinda',
+    'best invisible braces in Punjab',
+    'most experienced orthodontist in Bathinda',
   ];
 
   // State
@@ -563,36 +569,46 @@ function triggerConfetti() {
     });
   }
 
-  // ── Variation seeds for unique reviews every time ──
-  const OPENING_HOOKS = [
-    'Start with the moment you first noticed your results.',
-    'Open with what made you choose this clinic over others in Bathinda.',
-    'Begin by describing how you felt walking into the clinic for the first time.',
-    'Start with a comparison — how different life feels now versus before treatment.',
-    'Open with the specific result that surprised you most.',
-    'Begin with a friend or family member commenting on your smile or recovery.',
-    'Start by mentioning how nervous you were before treatment and how that changed.',
-    'Open with the one thing about this clinic you cannot stop telling people about.',
+  // ── 14 literal first-sentence starters: model MUST start with this exact text ──
+  // Literal starters (not abstract directions) guarantee reviews open differently every time.
+  const FIRST_SENTENCES = [
+    'Never thought a dental visit could genuinely change my confidence, but',
+    'My friend had been recommending this place for months, and',
+    'Three months ago I finally walked into The Dental Brace Clinic, and',
+    'After years of hiding my smile, I finally decided to do something about it.',
+    'My sister\'s results convinced me — so when my own turn came,',
+    'The first thing I noticed when I entered was how spotlessly clean',
+    'Finding a genuinely good dentist in Punjab is harder than people think —',
+    'Six months of treatment, and not once did I feel uncomfortable —',
+    'Came here for a routine checkup, ended up getting my entire smile transformed.',
+    'Before this clinic, I used to dread dental appointments. That has completely changed now.',
+    'Reading online reviews is one thing — experiencing this clinic firsthand is another.',
+    'What finally convinced me was seeing my neighbour\'s transformation after coming here.',
+    'Honestly, the results I got here speak louder than anything I can write.',
+    'If there is one decision I am genuinely proud of this year, it is choosing',
   ];
 
-  const NARRATIVE_ANGLES = [
-    'Focus the middle section on how painless and comfortable the procedure was.',
-    'Focus the middle section on the doctor\'s expertise and how they explained everything step by step.',
-    'Focus the middle section on the clinic\'s modern equipment and spotless hygiene.',
-    'Focus the middle section on the warmth and patience of the support staff.',
-    'Focus the middle section on the visible transformation and how quickly results appeared.',
-    'Focus the middle section on the aftercare support and follow-up attention from the team.',
+  // Structural seeds: force a different review element each time
+  const STRUCTURAL_SEEDS = [
+    'Include one short, punchy sentence (5-6 words max) somewhere mid-review for impact.',
+    'Include one sentence that directly compares this clinic to other dental clinics in Punjab.',
+    'Include one very specific physical detail about the clinic — a piece of equipment, the lighting, or the reception.',
+    'Include one sentence that captures exactly how the doctor made you feel during the procedure.',
+    'Reference one moment that surprised you positively — something you did not expect.',
+    'Include one sentence from the perspective of someone who noticed your transformation — friend, family, or colleague.',
   ];
 
-  const TONES = [
-    'conversational and warm, like chatting with a neighbour',
-    'grateful and emotional, like you genuinely want others to benefit',
-    'matter-of-fact but impressed, like a practical person sharing an honest opinion',
-    'enthusiastic but grounded, not over-the-top',
-    'calm and detailed, like someone who researched carefully before choosing',
+  // Language texture: changes the feel and voice of the writing each time
+  const LANGUAGE_TEXTURES = [
+    'Warm and conversational — write like telling a close friend over chai.',
+    'Straightforward and factual — like a no-nonsense person giving an honest verdict.',
+    'Grateful and slightly emotional — like someone whose quality of life genuinely improved.',
+    'Calm and measured — like someone who researched thoroughly before deciding.',
+    'Enthusiastic but grounded — excited but not exaggerating a single detail.',
+    'Quietly proud — like someone who made a great decision and is genuinely glad they did.',
   ];
 
-  // ── Build Prompt with Uniqueness Seeds ───────
+  // ── Build Prompt with Maximum Uniqueness ────────────
   function buildPrompt() {
     const txArr      = selectedTreatments.size > 0 ? [...selectedTreatments] : ['General Checkup'];
     const txLabel    = txArr.join(', ');
@@ -615,37 +631,36 @@ function triggerConfetti() {
       doctor = 'the expert dental team at The Dental Brace Clinic & Implant Centre';
     }
 
-    // Random variation seeds — forces a different review structure every time
-    const pick = arr => arr[Math.floor(Math.random() * arr.length)];
-    const hook    = pick(OPENING_HOOKS);
-    const angle   = pick(NARRATIVE_ANGLES);
-    const tone    = pick(TONES);
-    const seo1    = SEO_PHRASES[Math.floor(Math.random() * 4)];          // slots 0-3
-    const seo2    = SEO_PHRASES[4 + Math.floor(Math.random() * 4)];      // slots 4-7
+    // Random seeds — every combination forces a structurally different review
+    const pick        = arr => arr[Math.floor(Math.random() * arr.length)];
+    const firstLine   = pick(FIRST_SENTENCES);
+    const structural  = pick(STRUCTURAL_SEEDS);
+    const texture     = pick(LANGUAGE_TEXTURES);
+    // Pick 2 SEO phrases from opposite halves of the expanded pool
+    const half  = Math.floor(SEO_PHRASES.length / 2);
+    const seo1  = SEO_PHRASES[Math.floor(Math.random() * half)];
+    const seo2  = SEO_PHRASES[half + Math.floor(Math.random() * (SEO_PHRASES.length - half))];
 
-    return `You are ghostwriting a Google review for a real dental patient. Your only job is to write the review itself — nothing else.
+    return `You are a real dental patient in Bathinda, Punjab, writing a Google review. Output ONLY the review text — nothing else.
 
 CLINIC: The Dental Brace Clinic & Implant Centre, Bibi Wala Road, Bathinda, Punjab
-PATIENT NAME: ${name || 'a Bathinda resident'}
-TREATMENT: ${txLabel} — ${txContext}
+${name ? `YOUR NAME: ${name}` : ''}
+TREATMENT: ${txLabel} (${txContext})
 RATING: ${rating}/5 stars
 DOCTOR: ${doctor}
-PATIENT HIGHLIGHTS: ${notes || 'create specific, believable details that fit this treatment'}
+${notes ? `PERSONAL HIGHLIGHT: ${notes}` : ''}
 
-STYLE DIRECTION (follow exactly for uniqueness):
-- Tone: ${tone}
-- ${hook}
-- ${angle}
+WRITING INSTRUCTIONS — follow all precisely:
+1. START with this EXACT phrase (continue naturally from it): "${firstLine}"
+2. Voice: ${texture}
+3. Structure: ${structural}
+4. LENGTH: 100–120 words exactly. Tight, punchy, human. No fluff.
+5. Weave in "${seo1}" naturally once. Weave in "${seo2}" naturally once.
+6. Mention the doctor's AIIMS training or Gold Medal once — naturally, mid-review.
+7. End with a specific, genuine recommendation — NOT a generic phrase like "I highly recommend".
+8. Sound fully human: real rhythm, real specificity, real emotion. Zero marketing-speak.
 
-HARD RULES:
-1. Write ONLY the review. No intro, no headings, no bullets, no emojis.
-2. WORD COUNT: Exactly 100–120 words. Keep it concise, punchy, and highly authentic. Do not ramble.
-3. First person throughout. Sound like a real Indian patient from Punjab — natural, warm, and believable. Write as if you are leaving a quick, genuine recommendation.
-4. Weave in "${seo1}" and "${seo2}" naturally.
-5. Mention the doctor's AIIMS/Gold Medal credential once, naturally.
-6. Do NOT begin the review with the word "I".
-
-Review (100–120 words, write now):`;
+Review:`;
   }
 
   // ── Streaming Gemini API — Text Appears Live ──
@@ -664,10 +679,10 @@ Review (100–120 words, write now):`;
         body: JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
           generationConfig: {
-            temperature: 0.9,        // Higher = more variety per generation
-            maxOutputTokens: 180,    // Hard cap: 120 words ≈ 160 tokens; 180 = safe ceiling
-            topP: 0.95,
-            // topK omitted — fewer params = lower inference latency
+            temperature: 1.0,        // Max creativity = maximum variety per generation
+            maxOutputTokens: 180,    // 120 words ≈ 160 tokens; 180 = safe ceiling
+            topP: 0.97,
+            // topK omitted — fewer params = lower latency
           },
           safetySettings: [
             { category: 'HARM_CATEGORY_HARASSMENT',        threshold: 'BLOCK_NONE' },
