@@ -638,16 +638,14 @@ STYLE DIRECTION (follow exactly for uniqueness):
 - ${angle}
 
 HARD RULES:
-1. Write ONLY the review. No intro, no "Sure!", no headings, no bullets, no emojis, no quotes around the text.
-2. WORD COUNT: 200–250 words. Count every word. STOP writing at 250 words. Do not go over.
-3. First person throughout. Sound like a real Indian patient from Punjab — natural, warm, believable.
-4. Weave in "${seo1}" somewhere in the review naturally (not forced).
-5. Weave in "${seo2}" somewhere else in the review naturally (not back-to-back with the first).
-6. Mention the doctor's AIIMS/Gold Medal credential once, naturally mid-review.
-7. End with a genuine recommendation to families in Bathinda or Punjab.
-8. Do NOT begin the review with the word "I" — vary the opening.
+1. Write ONLY the review. No intro, no headings, no bullets, no emojis.
+2. WORD COUNT: Exactly 100–120 words. Keep it concise, punchy, and highly authentic. Do not ramble.
+3. First person throughout. Sound like a real Indian patient from Punjab — natural, warm, and believable. Write as if you are leaving a quick, genuine recommendation.
+4. Weave in "${seo1}" and "${seo2}" naturally.
+5. Mention the doctor's AIIMS/Gold Medal credential once, naturally.
+6. Do NOT begin the review with the word "I".
 
-Review (200–250 words, write now):`;
+Review (100–120 words, write now):`;
   }
 
   // ── Streaming Gemini API — Text Appears Live ──
@@ -667,7 +665,7 @@ Review (200–250 words, write now):`;
           contents: [{ parts: [{ text: prompt }] }],
           generationConfig: {
             temperature: 0.9,        // Higher = more variety per generation
-            maxOutputTokens: 380,    // Hard cap: 250 words ≈ 333 tokens; 380 = safe ceiling
+            maxOutputTokens: 180,    // Hard cap: 120 words ≈ 160 tokens; 180 = safe ceiling
             topP: 0.95,
             // topK omitted — fewer params = lower inference latency
           },
@@ -769,43 +767,19 @@ Review (200–250 words, write now):`;
     const seo1 = SEO_PHRASES[Math.floor(Math.random() * 4)];
     const seo2 = SEO_PHRASES[4 + Math.floor(Math.random() * 4)];
 
-    // 4 entirely different review structures
+    // 4 entirely different short review structures (100-120 words)
     const templates = [
       // Template 1: The Results Focus
-      `${nameTag} feel compelled to share my experience getting ${tx} at The Dental Brace Clinic & Implant Centre, Bathinda. In all honesty, this is the ${seo1}, and my results are absolute proof of that.
-
-From the moment I walked in, I was struck by how different this clinic feels compared to others in the region. The reception area is modern, the operatories are fully equipped with the latest dental technology, and every instrument is neatly sterilised and sealed.
-
-${doctorLine} From the very first consultation, I was thoroughly examined and my concerns were listened to without being rushed. A detailed treatment plan was explained step by step, including timelines and what outcomes I could realistically expect. ${notesPara}
-
-The treatment itself was carried out over multiple visits, each one punctual and professional. I experienced virtually no discomfort, which honestly surprised me. What sets this clinic apart as a ${seo2} is the combination of AIIMS-level clinical training and a genuinely patient-first approach. ${rating >= 4 ? 'Highly recommended to anyone in Punjab!' : 'A very professional clinic.'}`,
+      `${nameTag} feel compelled to share my experience getting ${tx} at The Dental Brace Clinic, Bathinda. This is honestly the ${seo1}, and my results prove it. The clinic is incredibly modern and spotless. ${doctorLine} Every step was explained clearly. ${notesPara}The treatment was totally painless. What sets them apart as a ${seo2} is their AIIMS-level expertise and genuine care. ${rating >= 4 ? 'Highly recommended to anyone in Punjab!' : 'A very professional clinic.'}`,
 
       // Template 2: The Comfort & Care Focus
-      `If you are looking for the ${seo1}, you do not need to look any further than The Dental Brace Clinic & Implant Centre. ${name ? `My name is ${name} and I` : 'I'} recently completed my ${tx} treatment here, and the entire journey was flawless.
-
-Dental visits usually make me nervous, but the calm atmosphere and impeccably clean environment here put me at ease instantly. ${doctorLine} Every single stage of the procedure was explained to me before it happened, meaning there were zero surprises.
-
-${notesPara}The actual procedure was remarkably smooth and pain-free. The staff made sure I was comfortable at all times, and the aftercare instructions were incredibly detailed. You can really tell that they use advanced equipment and strict hygiene protocols. 
-
-Finding a ${seo2} can be tough, but the quality of care and the stunning final results I got here make it an easy recommendation. ${rating === 5 ? 'Five stars without hesitation.' : 'Great experience overall.'}`,
+      `If you need the ${seo1}, look no further than The Dental Brace Clinic. ${name ? `My name is ${name} and I` : 'I'} recently finished my ${tx} here, and it was a flawless experience. Dental visits usually make me nervous, but their calm, hygienic environment put me at ease. ${doctorLine} ${notesPara}The procedure was smooth and pain-free. Finding a ${seo2} is tough, but their expert care makes it easy to recommend. ${rating === 5 ? 'Five stars without hesitation.' : 'Great experience overall.'}`,
 
       // Template 3: The Transformation Focus
-      `Writing this review to express my massive gratitude to The Dental Brace Clinic & Implant Centre in Bathinda. I came in for ${tx}, and the transformation has been incredible. This is undoubtedly the ${seo1}.
-
-${doctorLine} The level of professionalism here is unmatched. They don’t just rush you into the chair; they take the time to do digital scans, explain the root cause of the issue, and discuss the best possible options. 
-
-${notesPara}During the treatment sessions, the hygiene standards were clearly top-tier. Everything is modern and spotless. The team constantly checked on my comfort, ensuring the process was as painless as possible. 
-
-The results have given me so much confidence. If you need specialized dental work and are searching for a ${seo2}, this team’s AIIMS-level expertise is worth every penny. ${rating >= 4 ? 'Cannot recommend them enough to families in Bathinda!' : 'Good service and clean clinic.'}`,
+      `Writing this to express my massive gratitude to The Dental Brace Clinic in Bathinda. I came in for ${tx}, and the transformation is incredible! They are undoubtedly the ${seo1}. ${doctorLine} ${notesPara}The hygiene standards are top-tier and the team constantly checked on my comfort. The results have given me so much confidence. If you need specialized care and want a ${seo2}, their AIIMS expertise is worth it. ${rating >= 4 ? 'Cannot recommend them enough!' : 'Good service.'}`,
 
       // Template 4: The Professionalism Focus
-      `I rarely write reviews, but my experience getting ${tx} at The Dental Brace Clinic & Implant Centre was so exceptional that I had to share. Simply put, this is the ${seo1}.
-
-What impressed me first was the state-of-the-art facility on Bibi Wala Road. It is spotlessly clean, welcoming, and equipped with technology I haven't seen in other local clinics. ${doctorLine} 
-
-${notesPara}The care I received was meticulous. They maintained strict sterilisation protocols, which made me feel very safe. The treatment was completed exactly on the timeline they promised, with no hidden costs and absolutely no compromises on quality. I felt no pain, and the recovery was exactly as they described it would be.
-
-I can confidently say this is a ${seo2}. For anyone in Punjab needing high-quality dental or orthodontic care, this is the only place you need to visit. ${rating === 5 ? 'A perfect 5/5 experience.' : 'Definitely worth a visit.'}`
+      `I rarely write reviews, but my experience getting ${tx} at The Dental Brace Clinic was so exceptional I had to share. Simply put, this is the ${seo1}. The state-of-the-art facility is spotlessly clean. ${doctorLine} ${notesPara}They follow strict sterilisation, which made me feel very safe. The treatment was completed on time with zero hidden costs and absolutely no pain. I confidently say this is a ${seo2}. ${rating === 5 ? 'A perfect 5/5 experience.' : 'Definitely worth a visit.'}`
     ];
 
     // Pick a random template
